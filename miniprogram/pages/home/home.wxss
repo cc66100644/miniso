@@ -1,1 +1,91 @@
 /* miniprogram/pages/home/home.wxss */
+.overflow{
+  overflow: auto;
+  zoom: 1;
+}
+.floatleft{
+  float: left;
+}
+.floatright{
+  float: right;
+}
+.header-left{
+  width: 40%;
+  margin:10rpx;
+}
+.user-head-img image{
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+  /* border: 2rpx solid black; */
+  border-radius: 50%;
+}
+.user-head-info{
+  float: left;
+  margin-left: 10rpx;
+}
+.user-name{
+  width: 200rpx;
+  font-size: 28rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis; 
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+.user-card{
+  width: 80rpx;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+  color: #E9B52D;
+  border:2rpx solid #E9B52D;
+  border-radius: 40rpx;
+}
+
+.header-right{
+  width: 40%;
+}
+
+.header-right-bg{
+  width: 60%;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 2rpx solid red;
+  border-radius: 40rpx;
+  background-color: red;
+  position: relative;
+  left: 100rpx;
+  top: 20rpx;
+}
+
+.header-right-text{
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: white;
+  text-align: center;
+}
+.header-right-img image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right:30rpx; 
+  margin-top: 10rpx;
+}
+/* 左右滑动列表 */
+.scroll-view_H {
+  width: 100%;
+  white-space: nowrap;
+}
+.scroll-view-item_H {
+  width: 130rpx;
+  height: 130rpx;
+  display: inline-block;
+  margin: 20rpx;
+}
+.scroll-view-image{
+  width: 100%;
+  height: 100%;
+}
+.scroll-view-font{
+  font-size: 22rpx;
+  text-align: center;
+}
