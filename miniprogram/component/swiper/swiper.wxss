@@ -1,0 +1,9 @@
+/* component/swiper/swiper.wxss */
+swiper{
+  width: 100%;
+  /* height: 200rpx; */
+}
+.slide-image{
+  width: 750rpx;
+  height: 312rpx;
+}
