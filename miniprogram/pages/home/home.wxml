@@ -22,14 +22,17 @@
 <!-- 轮播图 -->
 <banner-swiper item="{{imgUrls}}"/>
 <!-- 大家都在看 -->
-<view>大家都在看</view>
-<view class="section section_gap">
-  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
-  <view wx:for="{{navMenu}}" class='scroll-view-item_H' wx:key="navMenu">
-      <navigator url="{{item.url}}"  class='scroll-view-item_H'>
-        <image src='{{item.src}}' class='scroll-view-image'></image>
-        <view class='scroll-view-font'>{{item.name}}</view>
+<view class='hotCommodities'>大家都在买</view>
+<scroll-view class="hot-view_H" scroll-x style="width: 100%">
+  <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
+      <navigator url="{{item.url}}"  class='hot-view-item_H'>
+        <image src='{{item.src}}' class='hot-view-image'></image>
+        <view class='hot-view-font'>{{item.name}}</view>
       </navigator>    
   </view>
-  </scroll-view>
-</view>
+</scroll-view>
+<scroll-view class="nav-view_H" scroll-x style="width: 100%">
+  <view wx:for="{{navName}}" class='nav-view-item_H' wx:key="navName">
+    <view class='nav-view-font'>{{item}}</view>  
+  </view>
+</scroll-view>

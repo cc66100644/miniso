@@ -1,4 +1,8 @@
 /* miniprogram/pages/home/home.wxss */
+.container{
+  width: 100%;
+  padding: 20rpx;
+}
 .overflow{
   overflow: auto;
   zoom: 1;
@@ -8,6 +12,9 @@
 }
 .floatright{
   float: right;
+}
+.header{
+  width: 100%;
 }
 .header-left{
   width: 40%;
@@ -70,22 +77,49 @@
   margin-right:30rpx; 
   margin-top: 10rpx;
 }
-/* 左右滑动列表 */
-.scroll-view_H {
+/* 热门个商品左右滑动列表 */
+.hotCommodities{
+  font-weight: bold;
+  font-size: 32rpx;
+  margin: 20rpx 0 0 10rpx;
+}
+.hot-view_H, .nav-view_H {
   width: 100%;
   white-space: nowrap;
 }
-.scroll-view-item_H {
-  width: 130rpx;
-  height: 130rpx;
+.hot-view-item_H {
+  width: 180rpx;
+  height: 180rpx;
   display: inline-block;
-  margin: 20rpx;
+  margin: 10rpx 20rpx;
 }
-.scroll-view-image{
+.hot-view-image{
   width: 100%;
   height: 100%;
 }
-.scroll-view-font{
-  font-size: 22rpx;
+.hot-view-font{
+  font-size: 28rpx;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis; 
+  margin-top: 20rpx;
+}
+/* 导航条左右滑动 */
+.nav-view_H{
+  margin-top: 20rpx;
+}
+.nav-view-item_H{
+  margin-right:10rpx; 
+  border: 2rpx solid #666;
+  border-radius: 40rpx;
+  width: 120rpx;
+  height: 60rpx;
+  display: inline-block;
+  margin: 10rpx 10rpx;
+}
+.nav-view-font{
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 60rpx;
 }

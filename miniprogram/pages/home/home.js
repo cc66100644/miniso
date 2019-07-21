@@ -16,47 +16,50 @@ Page({
       cardlevel: '普卡'
     },
     scrollTop: 100,
-    navMenu: [
+    hotCommodities: [
       {
-        src: '../../images/icon/shegnxian.png',
-        name: "生鲜",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/背包/bag1.jpg',
+        name: "流行学生双肩背包",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/yinliao.png',
-        name: "饮料",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/杯子/cup1.jpg',
+        name: "钢铁侠水杯",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/shuiguo.png',
-        name: "水果",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/杯子/cup4.jpg',
+        name: "美国队长水杯",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/jinkou.png',
-        name: "进口食品",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/风扇/fan3.jpg',
+        name: "迷你电风扇",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/tiandian.png',
-        name: "零食甜点",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other1.png',
+        name: "纸巾",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/shucai.png',
-        name: "蔬菜",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/娃娃/wawa1.jpg',
+        name: "可爱娃娃",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/jiulei.png',
-        name: "酒水",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/香水/xiangshui1.jpg',
+        name: "香水",
+        url: "/merchandise/merchandise?title=merchandise"
       },
       {
-        src: '../../images/icon/rulei.png',
-        name: "乳类",
-        url: "/test/test?title=test"
+        src: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/零食/lingshi1.jpg',
+        name: "美味零食",
+        url: "/merchandise/merchandise?title=merchandise"
       }
+    ],
+    navName:[
+      '背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
     ]
   },
    // 左右滑动条移动
