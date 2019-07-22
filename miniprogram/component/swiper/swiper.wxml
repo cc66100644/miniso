@@ -1,11 +1,18 @@
 <!--component/swiper/swiper.wxml-->
 <!-- 轮播图 -->
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}"
-indicator-active-color="{{indicatoractivecolor}}"
- circular="{{circular}}">
-  <block wx:for="{{item}}" wx:key="imgUrls">
-    <swiper-item>
-      <image src="{{item.url}}" mode='aspectFit' class="slide-image"/>
-    </swiper-item>
-  </block>
-</swiper>
+<view class='container'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}"
+  indicator-active-color="{{indicatoractivecolor}}" bindchange='swiperChange'
+  circular="{{circular}}">
+    <block wx:for="{{item}}" wx:key="imgUrls">
+      <swiper-item>
+        <image src="{{item.url}}" mode='aspectFit' class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots"> 
+    <block wx:for="{{item}}" wx:key="unique" > 
+      <view class="dot {{index == swiperCurrent  ? 'active' : ''}}"></view> 
+    </block> 
+  </view>
+</view>
