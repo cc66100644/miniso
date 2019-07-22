@@ -1,0 +1,26 @@
+/* component/community/community.wxss */
+.section{
+  width: 100%;
+  padding:20rpx;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.content{
+  width: 50%;
+}
+.content image{
+  width: 100%;
+}
+.content .text{
+  width: 100%;
+  height: 56rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}

@@ -1,1 +1,4 @@
 /* miniprogram/pages/community/community.wxss */
+.section{
+  width: 100%;
+}

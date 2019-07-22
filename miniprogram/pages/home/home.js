@@ -59,7 +59,27 @@ Page({
       }
     ],
     navName:[
-      '背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
+      '推荐', '新品','背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
+    ],
+    content:[
+      {
+        url:'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/风扇/fan2.jpg',
+        text:'非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
+        user:'随机用户1',
+        zan:'1'
+      },
+      {
+        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/hat1.jpg',
+        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
+        user: '随机用户2',
+        zan: '2'
+      },
+      {
+        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
+        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
+        user: '随机用户3',
+        zan: '3'
+      }
     ]
   },
    // 左右滑动条移动

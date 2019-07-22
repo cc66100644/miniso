@@ -22,7 +22,7 @@
 <!-- 轮播图 -->
 <banner-swiper item="{{imgUrls}}"/>
 <!-- 大家都在看 -->
-<view class='hotCommodities'>大家都在买</view>
+<view class='title'>大家都在买</view>
 <scroll-view class="hot-view_H" scroll-x style="width: 100%">
   <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
       <navigator url="{{item.url}}"  class='hot-view-item_H'>
@@ -36,3 +36,6 @@
     <view class='nav-view-font'>{{item}}</view>  
   </view>
 </scroll-view>
+<!-- 用户社区显示 -->
+<view class='title'>好物社区</view>
+<community content="{{content}}" />

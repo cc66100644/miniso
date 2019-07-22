@@ -1,0 +1,13 @@
+<!--component/community/community.wxml-->
+<view class='section'>
+    <view wx:for="{{content}}" wx:key="content" class='content'>
+      <view>
+        <image src='{{item.url}}' mode='widthFix'>评论图片</image>
+      </view>
+      <view class='text'>{{item.text}}</view>
+      <view class='user'>
+        <view>{{item.user}}</view>
+        <view>{{item.zan}}</view>
+      </view>
+    </view> 
+</view>

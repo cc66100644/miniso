@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "banner-swiper":"/component/swiper/swiper"
+    "banner-swiper":"/component/swiper/swiper",
+    "community":"/component/community/community"
   }
 }
