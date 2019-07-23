@@ -1,21 +1,24 @@
 /* component/swiper/swiper.wxss */
-.container{
+.swiper-container{
   width: 100%;
   position: relative;
 }
 swiper{
   width: 100%;
   margin-left: 1%;
+  /* position: relative; */
 }
 .slide-image{
   width: 750rpx;
-  height: 312rpx;
+  height: 100%;
+  vertical-align: middle;
 }
 .dots{ 
   position: absolute; 
   left: 0; 
   right: 0; 
-  bottom: 15%; 
+  bottom: 10%; 
+  /* margin-bottom: 10%; */
   display: flex; 
   justify-content: center; 
 } 

@@ -1,50 +1,67 @@
 <!--miniprogram/pages/home/home.wxml-->
 <view class='container'>
 
-<!--头部 -->
-<view class='header overflow'>
-  <view class='header-left overflow floatleft'>
-    <view class='user-head-img floatleft'>
-      <image src='{{userInfo.img}}'></image>
-    </view>
-    <view class='user-head-info overflow floatleft'>
-      <view class='user-name'>{{userInfo.name}}</view>
-      <view class='user-card'>{{userInfo.cardlevel}}</view>
-    </view>
-  </view>
-  <view class='header-right floatright'>
-    <view class='header-right-bg overflow' >
-      <view class='header-right-img floatright'>
-        <image src='../../images/icon/erweima.png'></image>
+  <!--头部 -->
+  <view class='header overflow'>
+    <view class='header-left overflow floatleft'>
+      <view class='user-head-img floatleft'>
+        <image src='{{userInfo.img}}'></image>
       </view>
-      <view class='header-right-text'>会员码</view>
+      <view class='user-head-info overflow floatleft'>
+        <view class='user-name'>{{userInfo.name}}</view>
+        <view class='user-card'>{{userInfo.cardlevel}}</view>
+      </view>
+    </view>
+    <view class='header-right floatright' bindtap="openpop">
+      <view class='header-right-bg overflow'>
+        <view class='header-right-img floatright'>
+          <image src='../../images/icon/erweima.png'></image>
+        </view>
+        <view class='header-right-text'>会员码</view>
+      </view>
     </view>
   </view>
-</view>
-<!-- 轮播图 -->
-<view class='swiper'>
-    <banner-swiper item="{{imgUrls}}"/>
-</view>
-<!-- 大家都在看 -->
-<view style='width:100%;'>
-  <view class='title'>大家都在买</view>
-  <scroll-view class="hot-view_H" scroll-x style="width: 100%">
-    <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
-        <navigator url="{{item.url}}"  class='hot-view-item_H'>
+  <!-- 轮播图 -->
+  <view class='swiper'>
+    <banner-swiper item="{{imgUrls}}" />
+  </view>
+  <!-- 大家都在看 -->
+  <view style='width:100%;'>
+    <view class='title'>大家都在买</view>
+    <scroll-view class="hot-view_H" scroll-x style="width: 100%">
+      <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
+        <navigator url="{{item.url}}" class='hot-view-item_H'>
           <image src='{{item.src}}' class='hot-view-image'></image>
           <view class='hot-view-font'>{{item.name}}</view>
-        </navigator>    
-    </view>
-  </scroll-view>
-  <scroll-view class="nav-view_H" scroll-x style="width: 100%">
-    <view wx:for="{{navName}}" class='nav-view-item_H' wx:key="navName">
-      <view class='nav-view-font'>{{item}}</view>  
-    </view>
-  </scroll-view>
+        </navigator>
+      </view>
+    </scroll-view>
+    <scroll-view class="nav-view_H" scroll-x style="width: 100%">
+      <view wx:for="{{navName}}" class='nav-view-item_H' wx:key="navName">
+        <view class='nav-view-font'>{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 用户社区显示 -->
+  <view style='width:100%;'>
+    <view class='title'>好物社区</view>
+    <community content="{{content}}" />
+  </view>
 </view>
-<!-- 用户社区显示 -->
-<view style='width:100%;'>
-  <view class='title'>好物社区</view>
-  <community content="{{content}}" />
-</view>
-</view>
+
+<cover-view id="abc" class="pop-up" hidden="{{pophiden}}" bindtap="closepop">
+      <cover-view class="pop-up-logo" catchtap="openpop">
+        <cover-image src="../../images/icon/logo.png" class="logo"></cover-image>
+      </cover-view>
+      <cover-view class="pop-up-container" catchtap="openpop">
+        <cover-view  class="yiweima" > 
+          <cover-image src="{{userInfo.yiweima}}" mode="aspectFit"></cover-image>
+        </cover-view>
+        <cover-view  class="erweima" >
+          <cover-image src="{{userInfo.erweima}}" mode="aspectFit"></cover-image>
+        </cover-view>
+        <cover-view class="close" catchtap="closepop">
+          <cover-image src="../../images/icon/close.png"></cover-image>
+        </cover-view>
+      </cover-view>
+</cover-view>

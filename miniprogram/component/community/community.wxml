@@ -1,19 +1,39 @@
 <!--component/community/community.wxml-->
 <view class='section'>
-    <view wx:for="{{content}}" wx:key="content" class='content item'>
-      <view>
-        <image src='{{item.url}}' mode='widthFix'>评论图片</image>
+    <view  class='list'>
+      <view wx:for="{{content}}" wx:key="content"wx:if="{{index%2 == 0}}" class='content'>
+        <view>
+          <image src='{{item.url}}' mode='widthFix'>评论图片</image>
+        </view>
+        <view class='text'>{{item.text}}</view>
+        <view class='user'>
+          <view class='user-img'>
+          <image src='{{item.headimg}}'  mode='widthFix'></image>
+          </view>
+          <view class='username'>{{item.user}}</view>
+          <view class='zan-img'>
+          <image src='../../images/icon/zan.png'  mode='widthFix'></image>
+          </view>
+          <view class='zan'>{{item.zan}}</view>
+        </view>
       </view>
-      <view class='text'>{{item.text}}</view>
-      <view class='user'>
-        <view class='user-img'>
-        <image src='{{item.headimg}}'  mode='widthFix'></image>
+    </view>
+    <view  class='list'>
+      <view wx:for="{{content}}" wx:key="content" wx:if="{{index%2 != 0}}" class='content'>
+        <view>
+          <image src='{{item.url}}' mode='widthFix'>评论图片</image>
         </view>
-        <view class='username'>{{item.user}}</view>
-        <view class='zan-img'>
-        <image src='../../images/icon/zan.png'  mode='widthFix'></image>
+        <view class='text'>{{item.text}}</view>
+        <view class='user'>
+          <view class='user-img'>
+          <image src='{{item.headimg}}'  mode='widthFix'></image>
+          </view>
+          <view class='username'>{{item.user}}</view>
+          <view class='zan-img'>
+          <image src='../../images/icon/zan.png'  mode='widthFix'></image>
+          </view>
+          <view class='zan'>{{item.zan}}</view>
         </view>
-        <view class='zan'>{{item.zan}}</view>
       </view>
     </view> 
 </view>
