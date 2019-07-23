@@ -1,0 +1,5 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view class="container">
+  <button class="login" bindtap="singin" open-type="getUserInfo" bindgetuserinfo='login' >立即登录</button>
+  <checkbox class="checkbox" checked="{{checked}}" bindtap="check">同意《XXX协议》和《用户守则》</checkbox>
+</view>

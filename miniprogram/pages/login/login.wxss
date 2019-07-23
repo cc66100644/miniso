@@ -1,0 +1,22 @@
+/* miniprogram/pages/login/login.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+}
+
+.login{
+  width: 280rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: red;
+  position: absolute;
+  bottom: 160rpx;
+  color: white;
+}
+
+.checkbox{
+  position: absolute;
+  bottom: 80rpx;
+  width: 100%;
+  text-align: center;
+}

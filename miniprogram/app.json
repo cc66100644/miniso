@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
     "pages/community/community",
     "pages/logistics/logistics",
@@ -50,7 +51,7 @@
     ],
     "selectedColor": "#C9202D"
   },
-  "permission":{
+  "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
