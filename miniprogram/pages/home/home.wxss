@@ -1,7 +1,13 @@
 /* miniprogram/pages/home/home.wxss */
 .container{
   width: 100%;
-  padding: 20rpx;
+  padding: 10rpx;
+}
+::-webkit-scrollbar {
+width: 0;
+height: 0;
+color: transparent;
+display: none;
 }
 .overflow{
   overflow: auto;
@@ -49,39 +55,49 @@
   border-radius: 40rpx;
 }
 
+.swiper{
+  width: 100%;
+  margin-right: 2%; 
+}
+
 .header-right{
-  width: 40%;
+  width: 200rpx;
+  height:60rpx;
+  margin: 20rpx 20rpx 0 0;
 }
 
 .header-right-bg{
-  width: 60%;
-  height: 60rpx;
+  width: 200rpx;
+  height:60rpx;
   line-height: 60rpx;
   border: 2rpx solid red;
   border-radius: 40rpx;
   background-color: red;
-  position: relative;
-  left: 100rpx;
-  top: 20rpx;
-}
-
-.header-right-text{
-  font-size: 28rpx;
-  line-height: 60rpx;
-  color: white;
   text-align: center;
 }
+.header-right-text{
+  width: 100rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  color: white;
+  margin-left: 30rpx;
+}
+.header-right-img{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right:40rpx; 
+  margin-top: 8rpx;
+}
 .header-right-img image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right:30rpx; 
-  margin-top: 10rpx;
+  width: 38rpx;
+  height: 38rpx;
 }
 /* 热门个商品左右滑动列表 */
 .title{
   font-weight: bold;
   font-size: 32rpx;
   margin: 20rpx 0 0 10rpx;
+  text-align: left
 }
 .hot-view_H, .nav-view_H {
   width: 100%;

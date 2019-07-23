@@ -1,4 +1,6 @@
 <!--miniprogram/pages/home/home.wxml-->
+<view class='container'>
+
 <!--头部 -->
 <view class='header overflow'>
   <view class='header-left overflow floatleft'>
@@ -15,27 +17,34 @@
       <view class='header-right-img floatright'>
         <image src='../../images/icon/erweima.png'></image>
       </view>
-      <view class='header-right-text floatright'>会员码</view>
+      <view class='header-right-text'>会员码</view>
     </view>
   </view>
 </view>
 <!-- 轮播图 -->
-<banner-swiper item="{{imgUrls}}"/>
+<view class='swiper'>
+    <banner-swiper item="{{imgUrls}}"/>
+</view>
 <!-- 大家都在看 -->
-<view class='title'>大家都在买</view>
-<scroll-view class="hot-view_H" scroll-x style="width: 100%">
-  <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
-      <navigator url="{{item.url}}"  class='hot-view-item_H'>
-        <image src='{{item.src}}' class='hot-view-image'></image>
-        <view class='hot-view-font'>{{item.name}}</view>
-      </navigator>    
-  </view>
-</scroll-view>
-<scroll-view class="nav-view_H" scroll-x style="width: 100%">
-  <view wx:for="{{navName}}" class='nav-view-item_H' wx:key="navName">
-    <view class='nav-view-font'>{{item}}</view>  
-  </view>
-</scroll-view>
+<view style='width:100%;'>
+  <view class='title'>大家都在买</view>
+  <scroll-view class="hot-view_H" scroll-x style="width: 100%">
+    <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
+        <navigator url="{{item.url}}"  class='hot-view-item_H'>
+          <image src='{{item.src}}' class='hot-view-image'></image>
+          <view class='hot-view-font'>{{item.name}}</view>
+        </navigator>    
+    </view>
+  </scroll-view>
+  <scroll-view class="nav-view_H" scroll-x style="width: 100%">
+    <view wx:for="{{navName}}" class='nav-view-item_H' wx:key="navName">
+      <view class='nav-view-font'>{{item}}</view>  
+    </view>
+  </scroll-view>
+</view>
 <!-- 用户社区显示 -->
-<view class='title'>好物社区</view>
-<community content="{{content}}" />
+<view style='width:100%;'>
+  <view class='title'>好物社区</view>
+  <community content="{{content}}" />
+</view>
+</view>
