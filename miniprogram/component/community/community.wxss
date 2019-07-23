@@ -7,9 +7,11 @@
   flex-flow: wrap;
   justify-content: space-between
 }
-.content{
+.list{
   width:49%;
-  margin-top: 20rpx;
+}
+.content{
+ margin-top: 20rpx;
 }
 .content image{
   width: 100%;

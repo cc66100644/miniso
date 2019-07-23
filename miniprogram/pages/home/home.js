@@ -13,7 +13,9 @@ Page({
     userInfo:{
       img: '../../images/head.png',
       name: '我身上的花朵12123123123',
-      cardlevel: '普卡'
+      cardlevel: '普卡',
+      erweima: '../../images/erweima.png',
+      yiweima: '../../images/cnaidc.png'
     },
     scrollTop: 100,
     hotCommodities: [
@@ -145,20 +147,24 @@ Page({
         user: '随机用户3',
         headimg: '../../images/icon/zan.png',
         zan: '12'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '13'
       }
-    ]
+    ],
+    pophiden:1
   },
    // 左右滑动条移动
   tapMove: function (e) {
     this.setData({
       scrollTop: this.data.scrollTop + 10
+    })
+  },
+  openpop: function (e) {
+    this.setData({
+      pophiden: 0
+    })
+  },
+  closepop: function (e) {
+    this.setData({
+      pophiden : 1
     })
   },
   /**
@@ -172,7 +178,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+        console.log(res)
+      }
+    })
   },
 
   /**
