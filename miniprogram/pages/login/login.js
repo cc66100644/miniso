@@ -26,6 +26,9 @@ Page({
         success(res){
           if (res.authSetting['scope.userInfo']){
             console.log('sucess')
+            wx.switchTab({
+              url: '/pages/home/home'
+            })
           }else{
             console.log('failed')
             wx.showToast({
@@ -44,8 +47,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     // wx.getSetting({
     //   success(res) {
+        
     //     if (res.authSetting['scope.userInfo']) {
     //       wx.switchTab({
     //         url: '/pages/home/home'

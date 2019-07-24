@@ -7,6 +7,7 @@
     "pages/mine/mine",
     "pages/shop/shop",
     "merchandise/merchandise"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -6,7 +6,7 @@
   circular="{{circular}}">
     <block wx:for="{{item}}" wx:key="imgUrls">
       <swiper-item>
-        <image src="{{item.url}}" mode='scaleToFill' class="slide-image"/>
+        <image src="{{item.src}}" mode='scaleToFill' class="slide-image"/>
       </swiper-item>
     </block>
   </swiper>

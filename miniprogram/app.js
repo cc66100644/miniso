@@ -7,6 +7,7 @@ App({
     } else {
       wx.cloud.init({
         traceUser: true,
+        env:'apptest-z7eyd'
       })
     }
 
