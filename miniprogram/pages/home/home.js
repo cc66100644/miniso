@@ -8,11 +8,11 @@ Page({
   data: {
     imgUrls: [],
     userInfo: {
-      img: '',
-      name: '',
-      cardlevel: '',
-      erweima: '',
-      yiweima: ''
+      img: '../../images/icon/zan.png',
+      name: '普卡',
+      cardlevel: '普卡',
+      erweima: '../../images/erweima.png',
+      yiweima: '../../images/cnaidc.png'
     },
     scrollTop: 100,
     hotCommodities: [],
@@ -144,36 +144,38 @@ Page({
     //       // console.log(res)
     //     }
     //   }),
-      //获取用户信息，头像名称显示
-      wx.getUserInfo({
-        success: res => {
-          this.setData({
-            userInfo: {
-              img: res.userInfo.avatarUrl,
-              name: res.userInfo.nickName,
-              cardlevel: '普卡',
-              erweima: '../../images/erweima.png',
-              yiweima: '../../images/cnaidc.png'
-            }
-          })
-        }
-      }),
-      //数据库读取轮播图内容
-      db.collection('swiper')
-      .get()
-      .then(res => {
+    //获取用户信息，头像名称显示
+    wx.getUserInfo({
+      success: res => {
         this.setData({
-          imgUrls: res.data
+          userInfo: {
+            img: res.userInfo.avatarUrl,
+            name: res.userInfo.nickName,
+            cardlevel: '普卡',
+            erweima: '../../images/erweima.png',
+            yiweima: '../../images/cnaidc.png'
+          }
         })
+      }
+    }),
+    //数据库读取轮播图内容
+    db.collection('swiper')
+    .get()
+    .then(res => {
+      // console.log(res)
+      this.setData({
+        imgUrls: res.data
       })
-      db.collection('goods')
-      .where({
-        hot: true
-      }).get().then(res => {
-        this.setData({
-          hotCommodities: res.data
-        })
+    })
+    //获取热门商品
+    db.collection('goods')
+    .where({
+      hot: true
+    }).get().then(res => {
+      this.setData({
+        hotCommodities: res.data
       })
+    })
   },
 
 

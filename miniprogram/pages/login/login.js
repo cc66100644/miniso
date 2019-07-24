@@ -25,12 +25,12 @@ Page({
       wx.getSetting({
         success(res){
           if (res.authSetting['scope.userInfo']){
-            console.log('sucess')
+            // console.log('sucess')
             wx.switchTab({
               url: '/pages/home/home'
             })
           }else{
-            console.log('failed')
+            // console.log('failed')
             wx.showToast({
               title: '请授权',
               icon: 'none',
