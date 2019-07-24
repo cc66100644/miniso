@@ -1,1 +1,80 @@
 /* miniprogram/pages/shop/shop.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+  /* padding: 0 10rpx; */
+}
+.head{
+  width: 98%;
+  height: 160rpx;
+  /* background-color:red;  */
+  position: fixed;
+  top: 0
+}
+/* 搜索条 */
+.search{
+  width: 100%;
+  height: 60rpx;
+  margin-top: 10rpx;
+  background-color: #eee;
+  border-radius: 40rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+.search image{
+  width: 34rpx;
+  height: 34rpx;
+  vertical-align: text-bottom;
+  margin-right: 10rpx;
+}
+.search text{
+ color: #aaa;
+}
+/* 头部导航 */
+.nav{
+  width: 100%;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+.nav-view_H{
+  margin-top: 10rpx;
+  width: 100%;
+  height: 80rpx;
+  white-space: nowrap;
+}
+.nav-view-item_H{
+  margin-right:10rpx; 
+  width: 100rpx;
+  height: 60rpx;
+  display: inline-block;
+  margin: 10rpx 10rpx;
+}
+.nav-view-font{
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+.selected{
+  color: red;
+  border-bottom: 2rpx solid red;
+}
+/* 内容 */
+.section{
+  position: relative;
+  top: 160rpx;
+  width: 100%;
+  height: 100%;
+}
+/* 轮播图 */
+.swiper-container{
+  width: 100%;
+  /* position: relative; */
+}
+swiper{
+  width: 100%;
+}
+.slide-image{
+  width: 750rpx;
+  height: 100%;
+  vertical-align: middle;
+}
