@@ -15,14 +15,14 @@
     </view>
   </view>
   <view class="section">
-    <view wx:for='{{selected}}' id="{{index}}" hidden="{{!selected[index]}}">
+    <view wx:for='{{selected}}' wx:key='selected' id="{{index}}" hidden="{{!selected[index]}}" >
 
     <!-- 轮播图 -->
       <view class='swiper-container'>
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" bindchange='swiperChange' circular="{{circular}}">
-          <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
+          <block wx:for="{{imgUrls}}" wx:key="imgUrls" >
             <swiper-item>
-              <image src="{{item.src}}" mode='scaleToFill' class="slide-image" />
+              <image src="{{item.src}}" mode='scaleToFill' class="slide-image"/>
             </swiper-item>
           </block>
         </swiper>

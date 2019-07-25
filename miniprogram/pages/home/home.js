@@ -1,5 +1,6 @@
 // miniprogram/pages/home/home.js
 const db = wx.cloud.database()
+
 Page({
 
   /**
@@ -162,9 +163,15 @@ Page({
     db.collection('swiper')
     .get()
     .then(res => {
+      let temparr = []
+      res.data.forEach(val => {
+          if (val.type == 1){
+            temparr.push(val)
+          }
+        })
       // console.log(res)
       this.setData({
-        imgUrls: res.data
+        imgUrls: temparr
       })
     })
     //获取热门商品
@@ -177,7 +184,6 @@ Page({
       })
     })
   },
-
 
   /**
    * 生命周期函数--监听页面显示

@@ -1,4 +1,5 @@
 // miniprogram/pages/shop/shop.js
+import tool from "../../utils/tool.js";
 const db = wx.cloud.database()
 Page({
 
@@ -17,12 +18,14 @@ Page({
     navName: [
       '推荐', '新品', '背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
     ],
-    selected: [true, false, false, false, false, false, false, false, false]
+    selected: [true, false, false, false, false, false, false, false, false],
+    swiperarr:[]
   },
   click:function(e){
+    // console.log("123", this.data.swiperarr)
     let index = e.target.id
+    // console.log(typeof index)
     let selected = this.data.selected
-    let temparr = []
     for (let i = 0; i < selected.length;i++){
       selected[i] = false
     }
@@ -30,34 +33,69 @@ Page({
     this.setData({
       selected: selected
     })
-    console.log('现' + selected)
+    // //控制当前的轮播图
+    // let num = parseInt(index) + 1;
+    // let temp = num > 1 ? false : true;
+    // console.log(num)
+    // tool.swiperImage(num).then(res => {
+    //   console.log(res)
+    //     this.setData({
+    //       imgUrls: res,
+    //       indicatorDots: temp
+    //     })     
+    // })
+    let temparr = [];
+    let num = parseInt(index) + 1;
+    let temp = num > 1 ? false : true;
+    this.data.swiperarr.forEach(val =>{
+      if (val.type == num) {
+        temparr.push(val)
+      }
+    })
+    this.setData({
+      imgUrls: temparr,
+      indicatorDots: temp
+    })
+    // console.log(temparr)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('swiper')
-      .get()
-      .then(res => {
-        // console.log(res)
-        this.setData({
-          imgUrls: res.data
+    // 外部调用控制轮播图
+    // tool.swiperImage(1).then(res =>{
+    //   this.setData({
+    //     imgUrls:res
+    //   })
+    // })
+    tool.swiperImage().then(res =>{
+     let temparr = [];
+      res.forEach(val => {
+          if (val.type == 1){
+            temparr.push(val)
+          }
         })
-      })
+      // console.log(temparr)
+     this.setData({
+       swiperarr: res,
+       imgUrls: temparr
+     })
+    })
+    // console.log(this.data.swiperarr)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // this.onLoad()
   },
 
   /**
