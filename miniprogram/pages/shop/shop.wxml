@@ -28,22 +28,49 @@
         </swiper>
       </view>
       <view wx:if='{{index == 0}}'>
-        <view style="display:flex;justify-content: space-between">
-          <view>
-              <image src="../../images/icon/zan.png" style="width:32rpx;height:32rpx;"></image>
-              <text>快递保证1</text>
-          </view>
-          <view>
-              <image src="../../images/icon/zan.png" style="width:32rpx;height:32rpx;"></image>
-              <text>快递保证2</text>
-          </view> 
-          <view>
-              <image src="../../images/icon/zan.png" style="width:32rpx;height:32rpx;"></image>
-              <text>快递保证3</text>
+        <!-- 信誉保证 -->
+        <view class="guarantee">
+          <view class="guaranteeItem"  wx:for='{{guaranteeText}}' wx:key=''>
+              <image src="../../images/icon/zan-on.png"></image>
+              <text>{{item}}</text>
           </view>
         </view>
-        <view>品牌甄选</view>
-        <view>新品首发</view>
+        <!-- 品牌甄选 -->
+        <view class="bestGoods">
+          <view class="title-head">
+            <view class="title-head-left">品牌甄选</view>
+            <view  class="title-head-right">每周精选</view>
+          </view>
+          <view class="bestGoods-section">
+            <view wx:for='{{bestGoods}}' wx:key='' 
+            class="bestGoodsItem {{bgc[index]}}">
+              <view class="bestGoodsText">
+                <view class="bestGoodsName">{{item.desc}}</view>
+                <view class="bestGoodsPrice">{{item.price}}元起</view>
+              </view>
+              <view class="bestGoodsImg">
+                <image src="{{item.src}}" mode="widthFix"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 新品首发  -->
+        <view class="newGood">
+          <view class="title-head">
+            <view class="title-head-left">新品首发</view>
+            <view class="title-head-right">跟多新品 > </view>
+          </view>
+          <view  class="newGoodSection">
+            <scroll-view class="hot-view_H" scroll-x style="width: 100%">
+              <view wx:for="{{}}" class='hot-view-item_H' wx:key="">
+                <navigator url="{{item.url}}" class='hot-view-item_H'>
+                  <image src='{{item.src}}' class='hot-view-image'></image>
+                  <view class='hot-view-font'>{{item.name}}</view>
+                </navigator>
+              </view>
+            </scroll-view>  
+          </view>
+        </view>
         <view>人气推荐</view>
       </view>
       <view>模板商品</view>

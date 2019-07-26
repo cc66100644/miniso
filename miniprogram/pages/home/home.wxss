@@ -3,12 +3,7 @@
   width: 100%;
   padding: 10rpx;
 }
-::-webkit-scrollbar {
-width: 0;
-height: 0;
-color: transparent;
-display: none;
-}
+
 .overflow{
   overflow: auto;
   zoom: 1;

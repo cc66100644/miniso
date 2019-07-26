@@ -19,17 +19,22 @@ Page({
       '推荐', '新品', '背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
     ],
     selected: [true, false, false, false, false, false, false, false, false],
-    swiperarr:[]
+    swiperarr: [],
+    guaranteeText: [
+      '名创优品自营', '30天无忧退货', '2个工作日内到货'
+    ],
+    bestGoods: [],
+    bgc: ['bestGoodsItem-green', 'bestGoodsItem-blue', 'bestGoodsItem-blue','bestGoodsItem-green']
   },
-  click:function(e){
+  click: function(e) {
     // console.log("123", this.data.swiperarr)
     let index = e.target.id
     // console.log(typeof index)
     let selected = this.data.selected
-    for (let i = 0; i < selected.length;i++){
+    for (let i = 0; i < selected.length; i++) {
       selected[i] = false
     }
-    selected[index] = !selected[index] 
+    selected[index] = !selected[index]
     this.setData({
       selected: selected
     })
@@ -47,7 +52,7 @@ Page({
     let temparr = [];
     let num = parseInt(index) + 1;
     let temp = num > 1 ? false : true;
-    this.data.swiperarr.forEach(val =>{
+    this.data.swiperarr.forEach(val => {
       if (val.type == num) {
         temparr.push(val)
       }
@@ -61,75 +66,84 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     // 外部调用控制轮播图
     // tool.swiperImage(1).then(res =>{
     //   this.setData({
     //     imgUrls:res
     //   })
     // })
-    tool.swiperImage().then(res =>{
-     let temparr = [];
+    tool.swiperImage().then(res => {
+      let temparr = [];
       res.forEach(val => {
-          if (val.type == 1){
-            temparr.push(val)
-          }
-        })
+        if (val.type == 1) {
+          temparr.push(val)
+        }
+      })
       // console.log(temparr)
-     this.setData({
-       swiperarr: res,
-       imgUrls: temparr
-     })
+      this.setData({
+        swiperarr: res,
+        imgUrls: temparr
+      })
     })
-    // console.log(this.data.swiperarr)
+    db.collection('goods').where({
+      best:true
+    }).get({
+      success:res => {
+        console.log(res.data)
+        this.setData({
+          bestGoods: res.data
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     // this.onLoad()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
