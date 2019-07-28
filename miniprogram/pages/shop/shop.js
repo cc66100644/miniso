@@ -1,6 +1,7 @@
 // miniprogram/pages/shop/shop.js
 import tool from "../../utils/tool.js";
 const db = wx.cloud.database()
+
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
     indicatoractivecolor: "#ffffff",
     swiperCurrent: 0,
     navName: [
-      '推荐', '新品', '背包', '餐厨', '零食', '风扇', '水杯', '娃娃', '香水'
+      '推荐', '新品', '日用品', '娃娃', '餐厨', '背包', '零食', '风扇','香水'
     ],
     selected: [true, false, false, false, false, false, false, false, false],
     swiperarr: [],
@@ -24,12 +25,15 @@ Page({
       '名创优品自营', '30天无忧退货', '2个工作日内到货'
     ],
     bestGoods: [],
-    bgc: ['bestGoodsItem-green', 'bestGoodsItem-blue', 'bestGoodsItem-blue','bestGoodsItem-green']
+    bgc: ['bestGoodsItem-green', 'bestGoodsItem-blue', 'bestGoodsItem-blue','bestGoodsItem-green'],
+    newGood:[],
+    hotRecommend:[],
+    goodsInfo:[],
   },
+  //页签切换页面
   click: function(e) {
-    // console.log("123", this.data.swiperarr)
-    let index = e.target.id
-    // console.log(typeof index)
+    //页签切换
+    let index = e.target.id 
     let selected = this.data.selected
     for (let i = 0; i < selected.length; i++) {
       selected[i] = false
@@ -38,22 +42,14 @@ Page({
     this.setData({
       selected: selected
     })
-    // //控制当前的轮播图
-    // let num = parseInt(index) + 1;
-    // let temp = num > 1 ? false : true;
-    // console.log(num)
-    // tool.swiperImage(num).then(res => {
-    //   console.log(res)
-    //     this.setData({
-    //       imgUrls: res,
-    //       indicatorDots: temp
-    //     })     
-    // })
-    let temparr = [];
-    let num = parseInt(index) + 1;
-    let temp = num > 1 ? false : true;
+    //轮播图
+    let temparr = []; // 临时数组
+    let swiperType = parseInt(index) + 1; //轮播图类型和页面的对应
+    let temp = swiperType > 1 ? false : true; //判断是否是第一页推荐页
+    // console.log(this.data.swiperarr)
+    //获取同类新的轮播图type
     this.data.swiperarr.forEach(val => {
-      if (val.type == num) {
+      if (val.type == swiperType) {
         temparr.push(val)
       }
     })
@@ -61,7 +57,83 @@ Page({
       imgUrls: temparr,
       indicatorDots: temp
     })
-    // console.log(temparr)
+
+    //切页返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    })
+    //各页签的商品
+    let goodsType = parseInt(index) + 1;
+    switch (goodsType){
+      case 1:
+        tool.maxClassNum(goodsType).then(res => {
+          let arr = []
+          for (var i = 0; i < res; i++) {
+            db.collection('goods').where({
+              recommend: true
+            }).get({
+              success: xxx => {
+                // console.log(xxx.data)
+                arr.push(xxx.data)
+                this.setData({
+                  aaaa: arr
+                })
+              }
+            })
+          }
+        })
+        break;
+      case 2:
+        tool.maxClassNum(goodsType).then(res => {
+          let arr = []
+          for (var i = 0; i < res; i++) {
+            db.collection('goods').where({
+              new: true
+            }).get({
+              success: xxx => {
+                arr.push(xxx.data)
+                this.setData({
+                  aaaa: arr
+                })
+              }
+            })
+          }
+        })
+        break;
+      default:
+        tool.maxClassNum((goodsType-2)).then(res => {
+          let arr = []
+          for (var i = 0; i < res; i++) {
+            db.collection('goods').where({
+              type: goodsType - 2,
+              class: i + 1
+            }).get({
+              success: xxx => {
+                // console.log(xxx.data)
+                arr.push(xxx.data)
+                this.setData({
+                  aaaa: arr
+                })
+              }
+            })
+          }
+        })
+    }
+  },
+  // 左右滑动
+  tapMove: function (e) {
+    this.setData({
+      scrollTop: this.data.scrollTop + 10
+    })
+  },
+  //商品页面跳转
+  skip:function(e){
+    console.log(e)
+    console.log(e.currentTarget)
+    wx.navigateTo({
+      url: '../../pages/goods/goods?id=' + e.currentTarget.id ,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,12 +146,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    // 外部调用控制轮播图
-    // tool.swiperImage(1).then(res =>{
-    //   this.setData({
-    //     imgUrls:res
-    //   })
-    // })
+
+    //轮播图
     tool.swiperImage().then(res => {
       let temparr = [];
       res.forEach(val => {
@@ -93,13 +161,54 @@ Page({
         imgUrls: temparr
       })
     })
+    // 品牌甄选
     db.collection('goods').where({
       best:true
     }).get({
       success:res => {
-        console.log(res.data)
+        // console.log(res)
         this.setData({
           bestGoods: res.data
+        })
+      }
+    })
+    //新品首发
+    db.collection('goods').where({
+      recommend:true,
+      new: true
+    }).get({
+      success: res => {
+        // console.log(res)
+       this.setData({
+         newGood: res.data
+       })
+      }
+    })
+    //人气推荐
+    db.collection('goods').where({
+      recommend: true,
+      hot: true
+    }).get({
+      success: res => {
+        // console.log(res)
+        this.setData({
+          hotRecommend: res.data
+        })
+      }
+    })
+    //推荐页初始商品
+    tool.maxClassNum(1).then(res => {
+      let arr = []
+      for (var i = 0; i < res; i++) {
+        db.collection('goods').where({
+          recommend: true
+        }).get({
+          success: xxx => {
+            arr.push(xxx.data)
+            this.setData({
+              aaaa: arr
+            })
+          }
         })
       }
     })

@@ -14,23 +14,22 @@
       </scroll-view>
     </view>
   </view>
-  <view class="section">
+  <view class="section" scroll-y='true'>
     <view wx:for='{{selected}}' wx:key='selected' id="{{index}}" hidden="{{!selected[index]}}" >
-
-    <!-- 轮播图 -->
-      <view class='swiper-container'>
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
-          <block wx:for="{{imgUrls}}" wx:key="imgUrls" >
-            <swiper-item>
-              <image src="{{item.src}}" mode='scaleToFill' class="slide-image"/>
-            </swiper-item>
-          </block>
-        </swiper>
-      </view>
       <view wx:if='{{index == 0}}'>
+         <!-- 轮播图 -->
+        <view class='swiper-container'>
+          <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
+            <block wx:for="{{imgUrls}}" wx:key="swiper-container" >
+              <swiper-item>
+                <image src="{{item.src}}" mode='scaleToFill' class="slide-image"/>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
         <!-- 信誉保证 -->
         <view class="guarantee">
-          <view class="guaranteeItem"  wx:for='{{guaranteeText}}' wx:key=''>
+          <view class="guaranteeItem"  wx:for='{{guaranteeText}}' wx:key='guaranteeText'>
               <image src="../../images/icon/zan-on.png"></image>
               <text>{{item}}</text>
           </view>
@@ -42,14 +41,16 @@
             <view  class="title-head-right">每周精选</view>
           </view>
           <view class="bestGoods-section">
-            <view wx:for='{{bestGoods}}' wx:key='' 
-            class="bestGoodsItem {{bgc[index]}}">
-              <view class="bestGoodsText">
-                <view class="bestGoodsName">{{item.desc}}</view>
-                <view class="bestGoodsPrice">{{item.price}}元起</view>
-              </view>
-              <view class="bestGoodsImg">
-                <image src="{{item.src}}" mode="widthFix"></image>
+            <view wx:for='{{bestGoods}}' wx:key='bestGoods' 
+            class="bestGoodsItem {{bgc[index]}}"  >
+              <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">
+                <view class="bestGoodsText">
+                  <view class="bestGoodsName">{{item.desc}}</view>
+                  <view class="bestGoodsPrice">{{item.price}}元起</view>
+                </view>
+                <view class="bestGoodsImg">
+                  <image src="{{item.src}}" mode="widthFix"></image>
+                </view>
               </view>
             </view>
           </view>
@@ -60,20 +61,68 @@
             <view class="title-head-left">新品首发</view>
             <view class="title-head-right">跟多新品 > </view>
           </view>
-          <view  class="newGoodSection">
-            <scroll-view class="hot-view_H" scroll-x style="width: 100%">
-              <view wx:for="{{}}" class='hot-view-item_H' wx:key="">
-                <navigator url="{{item.url}}" class='hot-view-item_H'>
-                  <image src='{{item.src}}' class='hot-view-image'></image>
-                  <view class='hot-view-font'>{{item.name}}</view>
-                </navigator>
+          <view  class="newGoodsSection">
+            <scroll-view class="newGoods-view_H" scroll-x style="width: 100%">
+              <view wx:for="{{newGood}}" class='newGoods-view-item_H' wx:key="recommend">
+                <view id="{{item._id}}" bindtap="skip">
+                  <image src='{{item.src}}' class='newGoods-view-image' mode="widthFix"></image>
+                  <view class='newGoods-view-name ellipsis'>{{item.name}}</view>
+                  <view class='newGoods-view-des ellipsis'>{{item.desc}}</view>
+                  <view class='newGoods-view-price'>¥{{item.price}}</view>
+                </view>
+              </view>
+              <view class="newGoods-view-item_H">
+                  <view class='newGoods-more'>查看全部</view>
               </view>
             </scroll-view>  
           </view>
         </view>
-        <view>人气推荐</view>
+        <!-- 人气推荐 -->
+        <view class="hotRecommend">
+          <view class="title-head">
+            <view class="title-head-left">人气推荐</view>
+            <view  class="title-head-right">热销口碑榜</view>
+          </view>
+          <view wx:for='{{hotRecommend}}' wx:key='hotRecommend' class="hotRecommend-section">
+            <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">
+              <view class="hotRecommend-img">
+                <image src="{{item.src}}"mode='widthFix'></image>
+              </view>
+              <view class="hotRecommend-text">
+                <view class='hotRecommend-name ellipsis'>{{item.name}}</view>
+                <view class='hotRecommend-des ellipsis'>{{item.desc}}</view>
+                <view class='hotRecommend-price'>¥{{item.price}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      <view>模板商品</view>
+      <!--  -->
+       <!-- 轮播图 -->
+      <view wx:if='{{index != 0}}' class='banner'>
+        <block wx:for="{{imgUrls}}" wx:key="banner-container" >
+            <view class="banner-image">
+              <image src="{{item.src}}" mode='scaleToFill' />
+            </view>
+        </block>
+      </view>
+      <!-- 模板商品 -->
+      <view class="goods" wx:for='{{aaaa}}' wx:key='aaaa' wx:for-index='j'>
+        <view class="goods-title">推荐</view>
+        <view class="goods-section">
+          <view wx:for='{{item}}' wx:key='goodsInfo' class="goodsInfo">
+            <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">
+              <view class="goods-img">
+                <image src="{{item.src}}" mode="widthFix"></image>
+                <view class="goods-desc">{{item.desc}}</view>
+              </view>
+              <view class="goods-name">{{item.name}}</view>
+              <view class="goods-price">¥{{item.price}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
+

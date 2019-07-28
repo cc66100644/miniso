@@ -1,2 +1,17 @@
 <!--miniprogram/pages/logistics/logistics.wxml-->
-<text>miniprogram/pages/logistics/logistics.wxml</text>
+<text bindtap="zzz">miniprogram/pages/logistics/logistics.wxml</text>
+
+
+<view class="goods" wx:for='{{aaaa}}' wx:key='aaaa' wx:for-index='j'>
+  <view class="goods-title">推荐</view>
+  <view class="goods-section">
+    <view wx:for='{{item}}' wx:key='goodsInfo' class="goodsInfo">
+      <view class="goods-img">
+        <image src="{{item.src}}" mode="widthFix"></image>
+        <view class="goods-desc">{{item.desc}}</view>
+      </view>
+      <view class="goods-name">{{item.name}}</view>
+      <view class="goods-price">¥{{item.price}}</view>
+    </view>
+  </view>
+</view>
