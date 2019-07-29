@@ -7,7 +7,9 @@
     "pages/community/community",
     "pages/logistics/logistics",
     "pages/mine/mine",
-    "merchandise/merchandise"
+    "merchandise/merchandise",
+    "pages/servicenotice/index",
+    "pages/comment/comment"
   ],
   "window": {
     "backgroundColor": "#000",

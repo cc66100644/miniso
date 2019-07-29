@@ -22,15 +22,71 @@
     </view>
   </view>
   <view class="selectGoods">
-    <van-cell title="请选择规格" is-link value="{{mychoose.choose}}" bind:click='show'/>
-    <view>
-      <view style="float:left">1234</view>
-      <view style="float:right">
+    <van-cell title="规格选择" is-link value="{{mychoose.choose}}" bind:click='show'/>
+    <van-cell title="数量选择">
         <van-stepper value="{{ 0 }}" integer step="1" bind:change="onChange"/>
+    </van-cell>
+    <view class="service" bindtap="onskip">
+      <view>服务:</view>
+      <view class="serviceul">
+        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
       </view>
+      <van-icon name="arrow" custom-class='serviceicon'/>
     </view>
   </view>
+  <!-- 用户评论 -->
+  <view class="comment">
+    <van-cell title="用户评价(141)" is-link value="查看全部" link-type="navigateTo"
+      url="/pages/comment/comment"/>
+    <view class="comment-content">
+      <view class="comment-content-head">
+        <view class="comment-user">
+          <image src="../../images/head.png" mode="widthFix" style="width:40px;">用户头像</image>
+          <text>用户名字</text>
+        </view>
+        <view class="comment-time">评论时间</view>
+      </view>
+      <view class="comment-text font-size"> 你的月光美丽而忧伤 </view>
+      <view>
+        <image src="https://6170-apptest-z7eyd-1259660366.tcb.qcloud.la/images/other/other1.png?sign=ce6b3be630e20157a0fe100162fded7e&t=1564413920" mode="widthFix" style='width:100px;' ></image>
+      </view>
+      <view class="font-size gray">规格型号</view>
+    </view>
+  </view>
+  <!-- 商品参数 -->
+  <view class="parameter">
+    商品参数
+  </view>
+  <view class="advert">
+    <image src="{{goodsInfo.advert}}" mode="widthFix" style="width:100%"></image>
+  </view>
+  <!-- 底部都买条 -->
+  <van-goods-action custom-class='van-goods-action'>
+    <van-goods-action-icon
+      icon="chat-o"
+      text="客服"
+      bind:click="onClickIcon"
+    />
+    <van-goods-action-icon
+      icon="cart-o"
+      text="购物车"
+      bind:click="onClickIcon"
+    />
+    <van-goods-action-button
+      text="加入购物车"
+      type="warning"
+      bind:click="onClickButton"
+    />
+    <van-goods-action-button
+      text="立即购买"
+      bind:click="onClickButton"
+    />
+  </van-goods-action>
 </view>
+<!-- 弹出层 -->
 <van-popup show="{{ show }}" position='bottom' bind:close="onClose">
   <view style="width:100%;height:800rpx;">
     <view class="mychoose">

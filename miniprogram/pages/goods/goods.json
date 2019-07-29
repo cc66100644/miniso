@@ -4,6 +4,10 @@
     "van-cell-group": "../../dist/cell-group/index",
     "van-icon": "../../dist/icon/index",
     "van-stepper": "../../dist/stepper/index",
-    "van-popup": "../../dist/popup/index"
+    "van-popup": "../../dist/popup/index",
+    "van-tag": "../../dist/tag/index",
+    "van-goods-action": "../../dist/goods-action/index",
+    "van-goods-action-icon": "../../dist/goods-action-icon/index",
+    "van-goods-action-button": "../../dist/goods-action-button/index"
    }
 }

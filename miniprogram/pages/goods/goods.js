@@ -19,47 +19,47 @@ Page({
     mychoose:{
       price:'',
       src:'',
-      choose:''
+      choose:'请选择'
     },
-    colorChoose:[
-      {name:'水杯001'},
-      { name: '水杯002' }
-      ],
-    select:[]
+    colorChoose:[],
+    select:[],
+    cookie:false
   },
   // 弹窗
   show(){
     this.setData({ show: true });
-    console.log(this.data.goodsInfo.price)
+    // console.log(this.data.goodsInfo.price)
     // console.log(this.data.goodsInfo.class)
-    db.collection('goods').where({
-      type:this.data.goodsInfo.type,
-      class: this.data.goodsInfo.class
-    }).get({
-      success:res => {
-        // console.log(res.data)
-        let temparr = []
+    if(!this.data.cookie){
+      // 初始化界面
+      db.collection('goods').where({
+        type:this.data.goodsInfo.type,
+        class: this.data.goodsInfo.class
+      }).get({
+        success:res => {
+          // console.log(res.data)
+          let temparr = []
 
-        this.setData({
-          colorChoose: res.data,
-        })
-        for (let i = 0; i < res.data.length;i++){
-
-          temparr.push(false)
+          this.setData({
+            colorChoose: res.data,
+          })
+          for (let i = 0; i < res.data.length;i++){
+            temparr.push(false)
+          }
+          // console.log(temparr)
+          this.setData({
+            select: temparr
+          })
         }
-        // console.log(temparr)
-        this.setData({
-          select: temparr
-        })
-      }
-    })
-    this.setData({
-      mychoose: {
-        price: this.data.goodsInfo.price,
-        src: this.data.goodsInfo.src,
-        choose: '请选择商品规格'
-      }
-    })
+      })
+      this.setData({
+        mychoose: {
+          price: this.data.goodsInfo.price,
+          src: this.data.goodsInfo.src,
+          choose: '请选择'
+        }
+      })
+    }
   },
   onClose() {
     this.setData({ show: false });
@@ -68,20 +68,41 @@ Page({
   select:function(e){
     let temparr = this.data.select
     let index = e.currentTarget.id
-    for (let i = 0; i < this.data.select.length; i++){
-      temparr[i] = false
+    // 判断是否已经选择货品
+    if (!temparr[index]){
+      for (let i = 0; i < this.data.select.length; i++){
+        temparr[i] = false
+      }
+      temparr[index] = !temparr[index]
+      this.setData({
+        select : temparr,
+        mychoose: {
+          price: this.data.colorChoose[index].price,
+          src: this.data.colorChoose[index].src,
+          choose: '已选择: ' + this.data.colorChoose[index].name
+        },
+        cookie:true
+      })
+    } else {
+      temparr[index] = !temparr[index]
+      this.setData({
+        select: temparr,
+        mychoose: {
+          price: this.data.goodsInfo.price,
+          src: this.data.goodsInfo.src,
+          choose: '请选择'
+        },
+        cookie: false
+      })
     }
-    temparr[index] = !temparr[index]
-    this.setData({
-      select : temparr,
-      mychoose: {
-        price: this.data.colorChoose[index].price,
-        src: this.data.colorChoose[index].src,
-        choose: '已选择: ' + this.data.colorChoose[index].name
-      },
-    })
   //  console.log(this.data.colorChoose[index])
-
+  },
+  //
+  onskip:function(){
+    console.log(1)
+    wx.navigateTo({
+      url: '/pages/servicenotice/index',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -101,6 +122,16 @@ Page({
       }
     })
   },
+  onClickIcon() {
+    Toast('点击图标');
+  },
+
+  onClickButton() {
+    Toast('点击按钮');
+  },
+
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
