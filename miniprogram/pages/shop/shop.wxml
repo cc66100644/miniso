@@ -108,7 +108,7 @@
       </view>
       <!-- 模板商品 -->
       <view class="goods" wx:for='{{aaaa}}' wx:key='aaaa' wx:for-index='j'>
-        <view class="goods-title">推荐</view>
+        <view class="goods-title">{{goodsInfoTitle}}</view>
         <view class="goods-section">
           <view wx:for='{{item}}' wx:key='goodsInfo' class="goodsInfo">
             <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">

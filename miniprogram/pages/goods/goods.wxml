@@ -1,2 +1,53 @@
 <!--miniprogram/pages/goods/goods.wxml-->
-<text>miniprogram/pages/goods/goods.wxml</text>
+<view class="body">
+  <view class='swiper-container'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
+      <block wx:for="{{goodsImg}}" wx:key="swiper-container" >
+        <swiper-item>
+          <image src="{{item}}" mode='widthFix' class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="goodsInfo">
+    <view class="goodsInfo-left">
+      <view class="font-blod">{{goodsInfo.name}}</view>
+      <view class="gray font-size font-margin">{{goodsInfo.desc}}</view>
+      <view class="font-blod font-margin">¥{{goodsInfo.price}}</view>
+    </view>
+    <view class="goodsInfo-right">
+      <view class="red font-blod">9</view>
+      <view class="red font-size">用户评价</view>
+      <view class="font-size gray size font-margin">查看</view>
+    </view>
+  </view>
+  <view class="selectGoods">
+    <van-cell title="请选择规格" is-link value="{{mychoose.choose}}" bind:click='show'/>
+    <view>
+      <view style="float:left">1234</view>
+      <view style="float:right">
+        <van-stepper value="{{ 0 }}" integer step="1" bind:change="onChange"/>
+      </view>
+    </view>
+  </view>
+</view>
+<van-popup show="{{ show }}" position='bottom' bind:close="onClose">
+  <view style="width:100%;height:800rpx;">
+    <view class="mychoose">
+      <view class="mychoose-img">
+        <image src="{{mychoose.src}}" mode="widthFix"></image>
+      </view>
+      <view class="mychosse-text">
+        <view class="red">价格：¥{{mychoose.price}}</view>
+        <view class="font-size font-margin">{{mychoose.choose}}</view>
+      </view>
+    </view>
+    <view class="chooselist">
+      <view wx:for='{{colorChoose}}' wx:key='colorChoose' wx:for-index='i' id="{{i}}"
+      class="chooseitem font-size {{select[i] ? 'choose-red' : 'choose-gray'}}" 
+      bindtap="select">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</van-popup>

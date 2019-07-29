@@ -15,7 +15,7 @@ Page({
     circular: true,
     indicatorcolor: "rgba(255, 255, 255, .3)",
     indicatoractivecolor: "#ffffff",
-    swiperCurrent: 0,
+
     navName: [
       '推荐', '新品', '日用品', '娃娃', '餐厨', '背包', '零食', '风扇','香水'
     ],
@@ -29,6 +29,7 @@ Page({
     newGood:[],
     hotRecommend:[],
     goodsInfo:[],
+    goodsInfoTitle: ''
   },
   //页签切换页面
   click: function(e) {
@@ -77,7 +78,8 @@ Page({
                 // console.log(xxx.data)
                 arr.push(xxx.data)
                 this.setData({
-                  aaaa: arr
+                  aaaa: arr,
+                  goodsInfoTitle:'猜你喜欢'
                 })
               }
             })
@@ -94,7 +96,8 @@ Page({
               success: xxx => {
                 arr.push(xxx.data)
                 this.setData({
-                  aaaa: arr
+                  aaaa: arr,
+                  goodsInfoTitle: '人气新品'
                 })
               }
             })
@@ -113,7 +116,8 @@ Page({
                 // console.log(xxx.data)
                 arr.push(xxx.data)
                 this.setData({
-                  aaaa: arr
+                  aaaa: arr,
+                  goodsInfoTitle: this.data.navName[parseInt(index)]
                 })
               }
             })
@@ -129,8 +133,8 @@ Page({
   },
   //商品页面跳转
   skip:function(e){
-    console.log(e)
-    console.log(e.currentTarget)
+    // console.log(e)
+    // console.log(e.currentTarget)
     wx.navigateTo({
       url: '../../pages/goods/goods?id=' + e.currentTarget.id ,
     })
@@ -206,7 +210,8 @@ Page({
           success: xxx => {
             arr.push(xxx.data)
             this.setData({
-              aaaa: arr
+              aaaa: arr,
+              goodsInfoTitle: '猜你喜欢'
             })
           }
         })
