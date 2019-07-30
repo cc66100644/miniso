@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-submit-bar": "../../dist/submit-bar/index",
+    "van-card": "../../dist/card/index",
+    "van-button": "../../dist/button/index",
+    "van-tag": "../../dist/tag/index",
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-checkbox-group": "../../dist/checkbox-group/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-stepper": "../../dist/stepper/index"
+  }
+}

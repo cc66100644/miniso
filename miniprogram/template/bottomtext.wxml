@@ -1,0 +1,3 @@
+<template name="bottom-text"> 
+  <view class="bottom-text"> --- 我是有底线的！ --- </view> 
+</template>

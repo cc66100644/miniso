@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/cart/index",
     "pages/goods/goods",
-    "pages/shop/shop",
     "pages/home/home",
     "pages/login/login",
+    "pages/shop/shop",
     "pages/community/community",
     "pages/logistics/logistics",
     "pages/mine/mine",
@@ -12,7 +13,7 @@
     "pages/comment/comment"
   ],
   "window": {
-    "backgroundColor": "#000",
+    "backgroundColor": "#eee",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "名创优品",

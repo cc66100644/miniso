@@ -131,13 +131,16 @@ swiper{
   width:100px;
   height:30px;
 }
+.dot-margin{
+  margin: 6px;
+ 
+}
 .dot{
   width: 8px;
   height: 8px;
   display: inline-block;
   border-radius:50%;
   background-color: red; 
-  margin: 6px;
 }
 /* 用户评论 */
 .comment{
@@ -166,6 +169,101 @@ swiper{
 .comment-text{
   margin-top: 10px;
 }
+/* 商品参数 */
+.parameter{
+  background-color: white;
+  margin-top: 10px;
+}
+.parameter-title{
+  text-align: center;
+  margin-top: 10px;
+}
+.black.van-cell__value{
+  color: black;
+  /* font-weight: bold; */
+}
+/* 售后说明 */
+.aftersale{
+  width: 100%;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  background-color: white;
+}
+.aftersale-title{
+  text-align: center;
+}
+.aftersale-list{
+  margin-top: 10px;
+}
+.aftersale-list-title{
+  margin-left: 5px;
+}
+/* 大家都在买 */
+.allbuy{
+  background-color: white;
+}
+.allbuy-title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.goods{
+  width: 98%;
+  margin: 2% 1% 0 1%;
+  /* background-color: #ccc; */
+}
+.goods-title{
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.goods-section{
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+.goods-item{
+  width: 46%;
+  margin: 2%;
+}
+.goods-img{
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  position: relative;
+  background-color: #ccc;
+  border-radius: 10rpx;
+}
+.goods-img image{
+  width: 60%;
+  margin-top: 5%;
+}
+.goods-desc{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: yellowgreen;
+  font-size: 28rpx;
+  text-align: left;
+  color: gold;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  position: absolute;
+  bottom:0;
+}
+.goods-name{
+  margin-top:10rpx; 
+}
+.goods-price{
+  margin-top:10rpx;
+  color: red;
+}
+
 /* 底部 */
 .van-goods-action{
   z-index: 999

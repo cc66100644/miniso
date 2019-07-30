@@ -1,0 +1,20 @@
+<!--miniprogram/pages/cart/index.wxml-->
+<!-- 商品卡片 -->
+<van-swipe-cell right-width="{{ 65 }}">
+  <van-checkbox value="{{ checked }}" bind:change="aa" custom-class='checkli'>
+   <van-card price="2.00" desc="描述信息" title="商品标题阿里巴巴爸爸111111" thumb="{{ imageURL.src }}" 
+    title-class='card-title' price-class='card-price' desc-class='card-desc'/>
+  </van-checkbox>
+  <van-stepper value="{{ 1 }}" custom-class="stepper"/>
+  <view slot="right" class="cancel">删除</view>
+</van-swipe-cell>
+
+<!-- 提交订单栏 -->
+<van-submit-bar
+  price="{{ 3050 }}"
+  button-text="提交订单"
+  bind:submit="onClickButton"
+  tip="{{ true }}"
+>
+  <van-checkbox value="{{ checked }}" bind:change="oncheck" custom-class='allchoose'>全选</van-checkbox>
+</van-submit-bar>

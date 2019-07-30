@@ -23,7 +23,26 @@ Page({
     },
     colorChoose:[],
     select:[],
-    cookie:false
+    cookie:false,
+    aftersale:[
+      {
+        title:'无忧退款',
+        text:'呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得'
+      },
+      {
+        title: '无忧退款',
+        text: '呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得'
+      },
+      {
+        title: '无忧退款',
+        text: '呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得'
+      },
+      {
+        title: '无忧退款',
+        text: '呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得得得呜呜呜呜的点点滴滴得得得'
+      }
+    ],
+    hot:[]
   },
   // 弹窗
   show(){
@@ -95,13 +114,21 @@ Page({
         cookie: false
       })
     }
-  //  console.log(this.data.colorChoose[index])
+
   },
-  //
+  //商品服务
   onskip:function(){
     console.log(1)
     wx.navigateTo({
       url: '/pages/servicenotice/index',
+    })
+  },
+  //商品页面跳转
+  skip: function (e) {
+    // console.log(e)
+    // console.log(e.currentTarget)
+    wx.navigateTo({
+      url: '../../pages/goods/goods?id=' + e.currentTarget.id,
     })
   },
   /**
@@ -121,13 +148,33 @@ Page({
         // console.log(this.data.goodsInfo)
       }
     })
+    db.collection('goods').where({
+      hot:true
+    }).get({
+      success:res =>{
+          // console.log(res.data)
+          this.setData({
+            hot:res.data
+          })
+      }
+    })
   },
+
+
   onClickIcon() {
-    Toast('点击图标');
+    wx.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 2000
+    })
   },
 
   onClickButton() {
-    Toast('点击按钮');
+    wx.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 2000
+    })
   },
 
 

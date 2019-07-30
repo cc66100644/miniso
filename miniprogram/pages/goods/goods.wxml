@@ -1,5 +1,6 @@
 <!--miniprogram/pages/goods/goods.wxml-->
 <view class="body">
+  <!-- 商品图片 -->
   <view class='swiper-container'>
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
       <block wx:for="{{goodsImg}}" wx:key="swiper-container" >
@@ -9,6 +10,7 @@
       </block>
     </swiper>
   </view>
+  <!-- 商品信息 -->
   <view class="goodsInfo">
     <view class="goodsInfo-left">
       <view class="font-blod">{{goodsInfo.name}}</view>
@@ -21,6 +23,7 @@
       <view class="font-size gray size font-margin">查看</view>
     </view>
   </view>
+  <!-- 商品选择 -->
   <view class="selectGoods">
     <van-cell title="规格选择" is-link value="{{mychoose.choose}}" bind:click='show'/>
     <van-cell title="数量选择">
@@ -29,10 +32,10 @@
     <view class="service" bindtap="onskip">
       <view>服务:</view>
       <view class="serviceul">
-        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
-        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
-        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
-        <text class="dot"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot dot-margin"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot dot-margin"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot dot-margin"></text><view class="font-size serviceli">2个工作日退款</view>
+        <text class="dot dot-margin"></text><view class="font-size serviceli">2个工作日退款</view>
       </view>
       <van-icon name="arrow" custom-class='serviceicon'/>
     </view>
@@ -58,12 +61,49 @@
   </view>
   <!-- 商品参数 -->
   <view class="parameter">
-    商品参数
+    <view class="parameter-title">商品参数</view>
+    <van-cell title='品牌' value='名创优品' value-class='black'/>
+    <van-cell title='名称' value='{{goodsInfo.name}}' value-class='black'/>
+    <van-cell title='{{goodsInfo.type == 5 ? "口味" : "颜色" }}' 
+    value='{{goodsInfo.type == 5 ? "辣" : goodsInfo.desc }}' value-class='black'
+    />
+    <van-cell title='{{goodsInfo.type == 5 ? "规格" : "材质" }}' 
+    value='{{goodsInfo.type == 5 ? "50g" : "纯棉" }}' value-class='black'
+    />
   </view>
+  <!-- 商品广告图  多张应该使用循环读取-->
   <view class="advert">
     <image src="{{goodsInfo.advert}}" mode="widthFix" style="width:100%"></image>
   </view>
-  <!-- 底部都买条 -->
+  <!-- 售后说明 -->
+  <view class="aftersale">
+    <view class="aftersale-title">售后说明</view>
+    <view wx:for='{{aftersale}}' wx:key='aftersale' class="aftersale-list">
+      <text class="dot"></text>
+      <text class="aftersale-list-title font-blod">{{item.title}}</text>
+      <view class="aftersale-list-text gray">{{item.text}}</view>
+    </view>
+  </view>
+  <!-- 大家都在买 -->
+  <view class="allbuy">
+    <view class="allbuy-title">大家都在买</view>
+      <view class="goods-section">
+        <view wx:for='{{hot}}' wx:key='goodsInfo' class="goods-item">
+          <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">
+            <view class="goods-img">
+              <image src="{{item.src}}" mode="widthFix"></image>
+              <view class="goods-desc">{{item.desc}}</view>
+            </view>
+            <view class="goods-name">{{item.name}}</view>
+            <view class="goods-price">¥{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+  </view>
+  <import src="../../template/bottomtext.wxml"/>
+  <template is="bottom-text"/>
+  <!-- <view class="bottom-text gray" > --- 我是有底线的！ --- </view> -->
+  <!-- 底部购买条 -->
   <van-goods-action custom-class='van-goods-action'>
     <van-goods-action-icon
       icon="chat-o"
@@ -73,7 +113,8 @@
     <van-goods-action-icon
       icon="cart-o"
       text="购物车"
-      bind:click="onClickIcon"
+      info="5"
+      url="../../pages/cart/index"
     />
     <van-goods-action-button
       text="加入购物车"

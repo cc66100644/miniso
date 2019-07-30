@@ -123,6 +123,14 @@ Page({
       pophiden: 1
     })
   },
+  //商品页面跳转
+  skip: function (e) {
+    // console.log(e)
+    console.log(e.currentTarget)
+    wx.navigateTo({
+      url: '../../pages/goods/goods?id=' + e.currentTarget.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

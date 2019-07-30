@@ -29,11 +29,9 @@
   <view style='width:100%;'>
     <view class='title'>大家都在买</view>
     <scroll-view class="hot-view_H" scroll-x style="width: 100%">
-      <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities">
-        <navigator url="{{item.url}}" class='hot-view-item_H'>
-          <image src='{{item.src}}' class='hot-view-image'></image>
+      <view wx:for="{{hotCommodities}}" class='hot-view-item_H' wx:key="hotCommodities" >
+          <image src='{{item.src}}' class='hot-view-image' id="{{item._id}}" bindtap="skip"></image>
           <view class='hot-view-font'>{{item.name}}</view>
-        </navigator>
       </view>
     </scroll-view>
     <scroll-view class="nav-view_H" scroll-x style="width: 100%">
