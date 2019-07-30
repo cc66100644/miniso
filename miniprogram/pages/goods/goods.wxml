@@ -113,13 +113,13 @@
     <van-goods-action-icon
       icon="cart-o"
       text="购物车"
-      info="5"
+      info="{{cartnum == 0 ? '': cartnum}}"
       url="../../pages/cart/index"
     />
     <van-goods-action-button
       text="加入购物车"
       type="warning"
-      bind:click="onClickButton"
+      bind:click="joinCart"
     />
     <van-goods-action-button
       text="立即购买"

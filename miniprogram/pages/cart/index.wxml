@@ -2,7 +2,7 @@
 <!-- 商品卡片 -->
 <van-swipe-cell right-width="{{ 65 }}">
   <van-checkbox value="{{ checked }}" bind:change="aa" custom-class='checkli'>
-   <van-card price="2.00" desc="描述信息" title="商品标题阿里巴巴爸爸111111" thumb="{{ imageURL.src }}" 
+   <van-card price="2.00" desc="描述信息" title="商品标题阿里巴巴爸爸111111" thumb="{{ imageURL.src }}" custom-class='card'
     title-class='card-title' price-class='card-price' desc-class='card-desc'/>
   </van-checkbox>
   <van-stepper value="{{ 1 }}" custom-class="stepper"/>

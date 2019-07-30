@@ -15,7 +15,7 @@ const swiperImage = function () {
 }
 
 //通过排序获取同种物品有多少类
-var maxClassNum = function (num) {
+const maxClassNum = function (num) {
   return new Promise((resolve, reject) => {
     db.collection('goods').where({
       type: num
@@ -28,7 +28,24 @@ var maxClassNum = function (num) {
   })
 }
 
+const getOpenid = function () {
+  return new Promise((resolve, reject) =>{
+    var openid = ''
+    wx.cloud.callFunction({
+      name: 'getOpenid',
+      complete: res => {
+        // console.log('云函数获取到的openid: ', res.result.openId)
+        openid = res.result.openId;
+        resolve(openid)
+      }
+    }) 
+  })
+}
+
+
+
 module.exports = {
   swiperImage,
-  maxClassNum
+  maxClassNum,
+  getOpenid
 };

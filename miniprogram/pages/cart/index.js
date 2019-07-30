@@ -1,4 +1,5 @@
 // miniprogram/pages/cart/index.js
+import tool from "../../utils/tool.js";
 Page({
 
   /**
@@ -25,10 +26,10 @@ Page({
     //     console.log(res)
     //   }
     // })
-   
-    
+    // this.getOpenid();
+  
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

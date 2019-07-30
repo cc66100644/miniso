@@ -6,6 +6,7 @@
   box-sizing: border-box;
   padding: 10px 15px;
   line-height: 120px;
+  background-color: #fafafa
 }
 .checkli .van-checkbox__icon-wrap{
   box-sizing: border-box;
@@ -19,6 +20,7 @@
   color: white;
   text-align: center;
 }
+
 .card-title{
   width: 170px;
   height: 36rpx;
