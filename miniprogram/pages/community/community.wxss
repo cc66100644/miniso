@@ -1,4 +1,14 @@
 /* miniprogram/pages/community/community.wxss */
-.section{
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.container{
+  height: 100%;
   width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }

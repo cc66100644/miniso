@@ -1,20 +1,23 @@
 <!--miniprogram/pages/cart/index.wxml-->
 <!-- 商品卡片 -->
-<van-swipe-cell right-width="{{ 65 }}">
-  <van-checkbox value="{{ checked }}" bind:change="aa" custom-class='checkli'>
-   <van-card price="2.00" desc="描述信息" title="商品标题阿里巴巴爸爸111111" thumb="{{ imageURL.src }}" custom-class='card'
-    title-class='card-title' price-class='card-price' desc-class='card-desc'/>
-  </van-checkbox>
-  <van-stepper value="{{ 1 }}" custom-class="stepper"/>
-  <view slot="right" class="cancel">删除</view>
-</van-swipe-cell>
-
+<block wx:for='{{cartgoods}}' wx:key='cartgoods' >
+<view hidden="{{ item.hide }}">
+  <van-swipe-cell right-width="{{ 65 }}" class='black' bind:close='onClose' >
+    <van-checkbox value="{{ item.choose }}" bind:change="oncheck" custom-class='checkli' id='{{ index }}'>
+      <van-card price="{{item.price}}" desc="{{item.desc}}" title="{{item.name}}" thumb="{{item.src}}" custom-class='card'
+      title-class='card-title' price-class='card-price' desc-class='card-desc'/>
+    </van-checkbox>
+    <van-stepper value="{{ item.num }}" custom-class="stepper" bind:change='onchange' id='{{ index }}'/>
+    <view slot="right" class="cancel" bindtap='onClose' id='{{ index }}'>删除</view>
+  </van-swipe-cell>
+</view>
+</block>
 <!-- 提交订单栏 -->
 <van-submit-bar
-  price="{{ 3050 }}"
+  price="{{ totalprice }}"
   button-text="提交订单"
   bind:submit="onClickButton"
   tip="{{ true }}"
 >
-  <van-checkbox value="{{ checked }}" bind:change="oncheck" custom-class='allchoose'>全选</van-checkbox>
+  <van-checkbox value="{{ checked }}" bind:change="allcheck" custom-class='allchoose'>全选</van-checkbox>
 </van-submit-bar>

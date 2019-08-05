@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/community/community",
     "pages/goods/goods",
     "pages/cart/index",
     "pages/home/home",
     "pages/login/login",
     "pages/shop/shop",
-    "pages/community/community",
     "pages/logistics/logistics",
     "pages/mine/mine",
     "merchandise/merchandise",

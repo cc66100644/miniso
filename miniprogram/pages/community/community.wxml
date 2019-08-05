@@ -1,3 +1,6 @@
 <!--miniprogram/pages/community/community.wxml-->
-<view>社区</view>
-<image src="https://6170-apptest-z7eyd-1259660366.tcb.qcloud.la/images/%E6%9D%AF%E5%AD%90/cup1.jpg?sign=a6254eec8d8a2cb1fd2cc220e8b1470b&t=1564304083"></image>
+<scroll-view class="container" scroll-y="true">
+  <view style='width:100%;'>
+      <community content="{{content}}" />
+  </view>
+</scroll-view>

@@ -55,3 +55,6 @@
 .allchoose{
   margin-left: 10px;
 }
+.black{
+  background-color: black;
+}

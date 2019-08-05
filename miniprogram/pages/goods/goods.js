@@ -166,7 +166,9 @@ Page({
           db.collection('cart').add({
             data: {
               goodsid: this.data.mychoose.id,
-              num: this.data.num
+              num: this.data.num,
+              hide:false,
+              choose:true
             },
             success: function (res) {
               // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

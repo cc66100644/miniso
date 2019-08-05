@@ -44,8 +44,10 @@ const getOpenid = function () {
 
 
 
+
+
 module.exports = {
   swiperImage,
   maxClassNum,
-  getOpenid
+  getOpenid,
 };
