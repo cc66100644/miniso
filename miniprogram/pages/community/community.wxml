@@ -3,4 +3,5 @@
   <view style='width:100%;'>
       <community content="{{content}}" />
   </view>
+  <button class="publish" bindtap="publish">发布</button>
 </scroll-view>

@@ -12,3 +12,15 @@
   top: 0;
   bottom: 0;
 }
+.publish{
+  width: 160rpx;
+  height: 80rpx;
+  border-radius: 20px;
+  border: none;
+  background-color: red;
+  position: fixed;
+  right: 20rpx;
+  bottom:20rpx;
+  color: white;
+  line-height: 80rpx;
+}
