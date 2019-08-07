@@ -121,3 +121,51 @@
   left:-2.5px;
   bottom:-1px;
 }
+/* 底部区域 */
+.foot{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 99999999;
+  /* background-color: greenyellow; */
+  zoom: 1;
+  overflow: hidden;
+}
+.scale{
+  float: left;
+}
+.white{
+  color:white;
+  border: 1px solid white;
+}
+.red{
+  color:red;
+  border: 1px solid red
+}
+.original{
+  width: 40px;
+  height: 40px;
+}
+.narrow{
+  width: 30px;
+  height: 40px;
+}
+.scale-style{
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  margin: 10px;
+}
+
+
+.next{
+  width: 200rpx;
+  height: 80rpx;
+  float: right;
+  margin: 10px;
+  line-height: 80rpx;
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+}

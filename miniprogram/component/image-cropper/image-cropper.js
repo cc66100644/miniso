@@ -251,7 +251,8 @@ Component({
           !that.data._canvas_overflow && that._draw();
         }
       }
-    }
+    },
+    select:true
   },
   attached() {
     this.data.info = wx.getSystemInfoSync();
@@ -395,7 +396,7 @@ Component({
      * 设置剪裁框和图片居中
      */
     setCutCenter() {
-      let cut_top = (this.data.info.windowHeight - this.data.height) * 0.5;
+      let cut_top = (this.data.info.windowHeight - this.data.height) * 0.3;
       let cut_left = (this.data.info.windowWidth - this.data.width) * 0.5;
       //顺序不能变
       this.setData({
@@ -406,7 +407,7 @@ Component({
       });
     },
     _setCutCenter(){
-      let cut_top = (this.data.info.windowHeight - this.data.height) * 0.5;
+      let cut_top = (this.data.info.windowHeight - this.data.height) * 0.3;
       let cut_left = (this.data.info.windowWidth - this.data.width) * 0.5;
       this.setData({
         cut_top: cut_top, //截取的框上边距
@@ -1111,6 +1112,22 @@ Component({
       })
     },
     _preventTouchMove() {
+    },
+    //比例尺寸选择
+    select(e){
+      console.log(e)
+      this.setData({
+        select: !this.data.select
+      })
+      switch(e.currentTarget.id){
+        case '1':
+          this.setCutSize(300, 300)
+          break;
+        case '2':
+          this.setCutSize(300, 225)
+          break;
+      }
     }
+    //截取并上传保存图片并跳转至文本编辑页面
   }
 })

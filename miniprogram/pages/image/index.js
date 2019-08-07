@@ -40,7 +40,10 @@ Page({
       urls: [e.detail.url] // 需要预览的图片http链接列表
     })
   },
-
+  aaa(){
+    var ccc = getImg()
+    console.lgo(ccc)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
