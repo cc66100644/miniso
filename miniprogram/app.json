@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/uploader/uploader",
     "pages/image/index",
     "pages/community/community",
     "pages/goods/goods",
