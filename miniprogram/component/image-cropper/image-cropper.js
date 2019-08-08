@@ -1127,7 +1127,11 @@ Component({
           this.setCutSize(300, 225)
           break;
       }
-    }
+    },
     //截取并上传保存图片并跳转至文本编辑页面
+    next(e){
+      console.log(e)
+      this.pushImg()
+    }
   }
 })

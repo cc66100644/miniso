@@ -93,7 +93,6 @@ Page({
   },
   //照片发布
   publish(e){
-    console.log(e)
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -102,10 +101,13 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         wx.navigateTo({
-          url: '../image/index?paths=' + tempFilePaths[0],
+          url: '../normal/normal?paths=' + tempFilePaths[0],
         })
       }
     })
+    // wx.navigateTo({
+    //   url: '../normal/normal',
+    // })
   },
   /**
    * 生命周期函数--监听页面加载

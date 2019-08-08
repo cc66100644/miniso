@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/uploader/uploader",
-    "pages/image/index",
     "pages/community/community",
+    "pages/normal/normal",
+    "pages/uploader/uploader",
     "pages/goods/goods",
     "pages/cart/index",
     "pages/home/home",

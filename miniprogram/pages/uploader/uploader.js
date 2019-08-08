@@ -57,5 +57,7 @@ Page({
             }
         })
     },
-    onLoad: function() {}
+  onLoad(option) {
+      console.log(option)
+    }
 })

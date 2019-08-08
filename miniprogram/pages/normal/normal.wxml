@@ -1,0 +1,19 @@
+<import src="../../component/we-cropper/we-cropper.wxml"/>
+
+<view class="cropper-wrapper">
+    <template is="we-cropper" data="{{...cropperOpt}}"/>
+    <view class="footer">
+        <!-- <view
+                class="upload"
+                bindtap="uploadTap">
+            上传图片
+        </view> -->
+        <view class="orgin style {{choose?'red':'white'}}" bindtap="select">1:1</view>
+        <view class="scale style {{!choose?'red':'white'}}" bindtap="select">4:3</view>
+        <view
+                class="getCropperImage next"
+                bindtap="getCropperImage">
+            下一步
+        </view>
+    </view>
+</view>
