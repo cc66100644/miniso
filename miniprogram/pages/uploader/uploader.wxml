@@ -17,3 +17,4 @@
     </view>
     <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
 </view>
+<button class="btn" bindtap="click">提 交</button>
