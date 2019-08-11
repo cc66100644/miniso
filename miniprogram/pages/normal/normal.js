@@ -1,5 +1,6 @@
 import WeCropper from '../../component/we-cropper/we-cropper.js'
 const device = wx.getSystemInfoSync()
+const db = wx.cloud.database()
 
 Page({
   data: {
@@ -35,10 +36,16 @@ Page({
         //   current: '', // 当前显示图片的http链接
         //   urls: [path] // 需要预览的图片http链接列表
         // })
-        // console.log(path)
-        wx.navigateTo({
-          url: '../uploader/uploader?path=' + path,
+        console.log(path)
+        db.collection('temp').add({
+          data:{
+            path: path
+          }
         })
+        wx.navigateTo({
+          url: '../uploader/uploader',
+        })
+        
       }
     })
   },

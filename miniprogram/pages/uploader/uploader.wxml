@@ -1,5 +1,10 @@
 <!-- 文件上传 -->
-<view class='domes_title'>uploader</view>
+<view class='domes_title'>
+  <textarea  
+      auto-height='true' 
+      maxlength='-1'
+      placeholder='这一刻想说点什么...'></textarea>
+</view>
 
 <view class='ui_cell'>
     <view class='ui_cell_bd'>图片上传</view>

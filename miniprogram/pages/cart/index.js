@@ -1,6 +1,7 @@
 // miniprogram/pages/cart/index.js
 import tool from "../../utils/tool.js";
-const db = wx.cloud.database()
+const db = wx.cloud.database();
+const app = getApp();
 Page({
 
   /**
