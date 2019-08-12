@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/uploader/uploader",
+    "pages/login/login",
     "pages/community/community",
     "pages/normal/normal",
     "pages/goods/goods",
     "pages/cart/index",
     "pages/home/home",
-    "pages/login/login",
     "pages/shop/shop",
     "pages/logistics/logistics",
     "pages/mine/mine",

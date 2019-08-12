@@ -36,7 +36,7 @@ Page({
         //   current: '', // 当前显示图片的http链接
         //   urls: [path] // 需要预览的图片http链接列表
         // })
-        console.log(path)
+        // console.log(path)
         db.collection('temp').add({
           data:{
             path: path

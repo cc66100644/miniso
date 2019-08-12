@@ -9,64 +9,84 @@ Page({
         showUpload:true,
         getpage:0
     },
-    // 删除图片
-    clearImg:function(e){
-        var nowList = [];//新数据
-        var uploaderList = this.data.uploaderList;//原数据
-        var target = uploaderList[e.currentTarget.dataset.index] //目标数据
-        //数据库中删除目标数据
-        db.collection('temp').where({
-          path: target
-        }).get({
-          success:res => {
-            // console.log(res.data[0]._id)
-            db.collection('temp').doc(res.data[0]._id).remove()
+  // 删除图片
+  clearImg:function(e){
+      var nowList = [];//新数据
+      var uploaderList = this.data.uploaderList;//原数据
+      var target = uploaderList[e.currentTarget.dataset.index] //目标数据
+      //数据库中删除目标数据
+      db.collection('temp').where({
+        path: target
+      }).get({
+        success:res => {
+          // console.log(res.data[0]._id)
+          db.collection('temp').doc(res.data[0]._id).remove()
+        }
+      })
+      //删除后的页面显示
+      for (let i = 0; i < uploaderList.length;i++){
+          if (i == e.currentTarget.dataset.index){
+              continue;
+          }else{
+              nowList.push(uploaderList[i])
           }
+      }
+      this.setData({
+          uploaderNum: this.data.uploaderNum - 1,
+          uploaderList: nowList,
+          showUpload: true
+      })
+      //删除最后张照片后返回初始夜
+    if (nowList.length == 0){
+        wx.navigateBack({
+          delta:this.data.getpage
         })
-        //删除后的页面显示
-        for (let i = 0; i < uploaderList.length;i++){
-            if (i == e.currentTarget.dataset.index){
-                continue;
-            }else{
-                nowList.push(uploaderList[i])
-            }
-        }
-        this.setData({
-            uploaderNum: this.data.uploaderNum - 1,
-            uploaderList: nowList,
-            showUpload: true
-        })
-        //删除最后张照片后返回初始夜
-      if (nowList.length == 0){
-          wx.navigateBack({
-            delta:this.data.getpage
-          })
-        }
-    },
-    //展示图片
-    showImg:function(e){
-        var that=this;
-        wx.previewImage({
-            urls: that.data.uploaderList,
-            current: that.data.uploaderList[e.currentTarget.dataset.index]
-        })
-    },
-    //上传图片
-    upload: function(e) {
-        var that = this;
-        wx.chooseImage({
-            count: 1,
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: res=> {
-                // tempFilePath可以作为img标签的src属性显示图片
-                var tempFilePaths = res.tempFilePaths
-                wx.navigateTo({
-                  url: '../normal/normal?paths=' + tempFilePaths[0],
-                })
-            }
-        })
-    },
+      }
+  },
+  //展示图片
+  showImg:function(e){
+      var that=this;
+      wx.previewImage({
+          urls: that.data.uploaderList,
+          current: that.data.uploaderList[e.currentTarget.dataset.index]
+      })
+  },
+  //选择要上传的图片
+  upload: function(e) {
+      var that = this;
+      wx.chooseImage({
+          count: 1,
+          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+          success: res=> {
+              // tempFilePath可以作为img标签的src属性显示图片
+              var tempFilePaths = res.tempFilePaths
+              wx.navigateTo({
+                url: '../normal/normal?paths=' + tempFilePaths[0],
+              })
+          }
+      })
+  },
+  // 上传提交图片
+  click: function(e) {
+    console.log(this.data.uploaderList)
+    var url = this.data.uploaderList
+    var userinfo = app.globalData.userInfo
+    // db.collection("comment").add({
+    //   data:{
+    //     url: url,
+    //     userinfo:userinfo
+    //   }
+    // })
+    var num ='0' + Math.floor(Math.random()*100+1) 
+    console.log(num)
+    // url.forEach(val=>{
+    //   console.log(val)
+    //   wx.cloud.uploadFile({
+    //     cloudPath: '/upload/' + app.globalData.openid + '/' + Math.random() + new Date().getTime()
+    //   })
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

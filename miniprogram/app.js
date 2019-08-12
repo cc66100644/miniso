@@ -4,6 +4,7 @@ App({
     
     globalData:{
       openid:null
+      userInfo:null
     }
 
     if (!wx.cloud) {
@@ -25,7 +26,8 @@ App({
 
 
     this.globalData = {
-      openid : null
+      openid : null,
+      userInfo: null
     }
   }
 })

@@ -1,6 +1,6 @@
 // miniprogram/pages/home/home.js
 const db = wx.cloud.database()
-
+const app = getApp();
 Page({
 
   /**
@@ -156,6 +156,8 @@ Page({
     //获取用户信息，头像名称显示
     wx.getUserInfo({
       success: res => {
+        // console.log(res)
+        app.globalData.userInfo = res.userInfo
         this.setData({
           userInfo: {
             img: res.userInfo.avatarUrl,
