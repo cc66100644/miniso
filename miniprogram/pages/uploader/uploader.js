@@ -7,7 +7,9 @@ Page({
         uploaderList: [],
         uploaderNum:0,
         showUpload:true,
-        getpage:0
+        getpage:0,
+        content:'',
+        cursor:0
     },
   // 删除图片
   clearImg:function(e){
@@ -51,6 +53,13 @@ Page({
           current: that.data.uploaderList[e.currentTarget.dataset.index]
       })
   },
+  //文本输入
+  input(e){
+    this.setData({
+      content:e.detail.value,
+      cursor: e.detail.cursor
+    })
+  },
   //选择要上传的图片
   upload: function(e) {
       var that = this;
@@ -62,31 +71,70 @@ Page({
               // tempFilePath可以作为img标签的src属性显示图片
               var tempFilePaths = res.tempFilePaths
               wx.navigateTo({
-                url: '../normal/normal?paths=' + tempFilePaths[0],
+                url: '../normal/normal?paths=' + tempFilePaths[0] + '&content=' + this.data.content + '&cursor=' + this.data.cursor,
               })
           }
       })
   },
-  // 上传提交图片
+  // 上传提交
   click: function(e) {
-    console.log(this.data.uploaderList)
+    // console.log(this.data.uploaderList)
     var url = this.data.uploaderList
     var userinfo = app.globalData.userInfo
-    // db.collection("comment").add({
-    //   data:{
-    //     url: url,
-    //     userinfo:userinfo
-    //   }
-    // })
     var num ='0' + Math.floor(Math.random()*100+1) 
-    console.log(num)
-    // url.forEach(val=>{
-    //   console.log(val)
-    //   wx.cloud.uploadFile({
-    //     cloudPath: '/upload/' + app.globalData.openid + '/' + Math.random() + new Date().getTime()
-    //   })
-    // })
+    var pathslist= []
+    var time = new Date().getTime()
+    // console.log(num)
+    if(this.data.content != ''){
+      wx.showLoading({
+        title: '上传中',
+      })
+      var x = function(){
+        return new Promise((reslove,reject) => {
+          url.forEach(val=>{
+            // console.log(val)
+            wx.cloud.uploadFile({
+              cloudPath: 'upload/' + app.globalData.openid + '/' +num + new Date().getTime() + '.png',
+              filePath: val,
+              success:res=>{
+                // console.log(res.fileID)
+                pathslist.push(res.fileID)
+                reslove(pathslist)
+              }
+            })
+          })  
+        })
+      }
+      x().then(res=>{
+        // console.log(res)
+        db.collection("comment").add({
+          data: {
+            url: res,
+            text: this.data.content,
+            userinfo: userinfo,
+            time: time,
+            zan:0,
+            other:[]
+          }
+        })
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+        // console.log(time)
+        wx.redirectTo({
+          url: '../article/article?time=' + time,
+        })
+      }, 2000)
+    } else{
+      wx.showModal({
+        title: '提示',
+        showCancel:false,
+        content: '请说点什么吧',
+        success(res) {}
+      })
+    }
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -96,11 +144,14 @@ Page({
         _openid: app.globalData.openid
       }).get({
         success:res=>{
+          // console.log(res.data)
           res.data.forEach(val =>{
             this.data.uploaderList.push(val.path)
           })
           this.setData({
-            uploaderList: this.data.uploaderList
+            uploaderList: this.data.uploaderList,
+            content: res.data[res.data.length-1].content,
+            cursor: res.data[res.data.length-1].cursor
           })
         }
       })
@@ -125,6 +176,21 @@ Page({
           showUpload:false
         })
       }
-    }
+  },
+  /**
+  * 生命周期函数--监听页面卸载
+  */
+  onUnload: function () {
+    db.collection('temp').where({
+      _openid: app.globalData.openid
+    }).get({
+      success: res => {
+        res.data.forEach(val=>{
+          db.collection('temp').doc(val._id).remove()
+        })
+      }
+    })
+  }
+
 
 })

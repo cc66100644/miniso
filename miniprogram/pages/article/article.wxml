@@ -1,0 +1,19 @@
+<!--miniprogram/pages/article/article.wxml-->
+<text>miniprogram/pages/article/article.wxml</text>
+<view class="text">
+    <view>头像</view>
+    <view>名字</view>
+</view>
+<view>
+  <swiper></swiper>
+</view>
+<view>
+  <view>我的评论</view>
+</view>
+<view>
+  <view>点赞人头像</view>
+  <view>点赞的人数</view>
+</view>
+<view>
+    底部功能条
+</view>

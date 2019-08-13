@@ -1,9 +1,12 @@
 <!-- 文件上传 -->
 <view class='domes_title'>
+  <view>{{cursor}}/200</view>
   <textarea  
       auto-height='true' 
-      maxlength='-1'
-      placeholder='这一刻想说点什么...'></textarea>
+      maxlength='200'
+      placeholder='这一刻想说点什么...' bindinput="input" value="{{content}}">
+  </textarea>
+  
 </view>
 
 <view class='ui_cell'>

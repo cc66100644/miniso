@@ -13,6 +13,14 @@
 .domes_title textarea{
   width: 100%;
 }
+.domes_title view{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #999;
+  font-size: 12pt;
+  margin-right: 20rpx;
+}
 .ui_cell{
     display: flex;
     position: relative;
