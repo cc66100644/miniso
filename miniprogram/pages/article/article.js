@@ -7,6 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    circular: true,
+    indicatorcolor: "rgba(255, 255, 255, .3)",
+    indicatoractivecolor: "#ffffff",
+    
     userinfo:[],
     url:[],
     content:'',
@@ -22,14 +30,19 @@ Page({
       time: +(options.time)
     }).get({
       success:res => {
+        console.log(res.data)
         this.setData({
-          url: res.data.url,
-          content: res.data.text,
-          zan: res.data.zan,
-          other: res.data.other
+          url: res.data[0].url,
+          content: res.data[0].text,
+          zan: res.data[0].zan,
+          other: res.data[0].other
         })
       }
     })
+    this.setData({
+      userinfo: app.globalData.userInfo
+    })
+    // console.log(app.globalData.userInfo)
   },
 
   /**

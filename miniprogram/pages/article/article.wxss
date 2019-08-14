@@ -1,1 +1,25 @@
 /* miniprogram/pages/article/article.wxss */
+/* 抬头 */
+.header{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.name{
+  font-size: 32rpx;
+  background-color: #999;
+}
+/* 轮播图 */
+.swiper-container{
+  width: 100%;
+  height: 750rpx;
+}
+swiper{
+  width: 100%;
+  height: 750rpx;
+}
+.slide-image{
+  width: 750rpx;
+  height: 750rpx;
+  vertical-align: middle;
+}

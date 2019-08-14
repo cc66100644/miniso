@@ -101,7 +101,7 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         wx.navigateTo({
-          url: '../normal/normal?paths=' + tempFilePaths[0],
+          url: '../normal/normal?paths=' + tempFilePaths[0] + '&content=&cursor=0',
         })
       }
     })

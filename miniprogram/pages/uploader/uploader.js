@@ -9,13 +9,16 @@ Page({
         showUpload:true,
         getpage:0,
         content:'',
-        cursor:0
+        cursor:0,
+        pathslist:[]
     },
   // 删除图片
   clearImg:function(e){
       var nowList = [];//新数据
       var uploaderList = this.data.uploaderList;//原数据
-      var target = uploaderList[e.currentTarget.dataset.index] //目标数据
+      var pathslist = this.data.pathslist;
+      var target = uploaderList[e.currentTarget.dataset.index]; //目标数据
+      var file = pathslist[e.currentTarget.dataset.index]; //目标文件名
       //数据库中删除目标数据
       db.collection('temp').where({
         path: target
@@ -24,6 +27,10 @@ Page({
           // console.log(res.data[0]._id)
           db.collection('temp').doc(res.data[0]._id).remove()
         }
+      })
+      wx.cloud.deleteFile({
+        fileList: [file],
+        success: res => {}
       })
       //删除后的页面显示
       for (let i = 0; i < uploaderList.length;i++){
@@ -81,7 +88,6 @@ Page({
     // console.log(this.data.uploaderList)
     var url = this.data.uploaderList
     var userinfo = app.globalData.userInfo
-    var num ='0' + Math.floor(Math.random()*100+1) 
     var pathslist= []
     var time = new Date().getTime()
     // console.log(num)
@@ -89,34 +95,16 @@ Page({
       wx.showLoading({
         title: '上传中',
       })
-      var x = function(){
-        return new Promise((reslove,reject) => {
-          url.forEach(val=>{
-            // console.log(val)
-            wx.cloud.uploadFile({
-              cloudPath: 'upload/' + app.globalData.openid + '/' +num + new Date().getTime() + '.png',
-              filePath: val,
-              success:res=>{
-                // console.log(res.fileID)
-                pathslist.push(res.fileID)
-                reslove(pathslist)
-              }
-            })
-          })  
-        })
-      }
-      x().then(res=>{
-        // console.log(res)
-        db.collection("comment").add({
-          data: {
-            url: res,
-            text: this.data.content,
-            userinfo: userinfo,
-            time: time,
-            zan:0,
-            other:[]
-          }
-        })
+    console.log(this.data.pathslist)
+      db.collection("comment").add({
+        data: {
+          url: this.data.pathslist,
+          text: this.data.content,
+          userinfo: userinfo,
+          time: time,
+          zan:0,
+          other:[]
+        }
       })
       setTimeout(function () {
         wx.hideLoading()
@@ -147,6 +135,7 @@ Page({
           // console.log(res.data)
           res.data.forEach(val =>{
             this.data.uploaderList.push(val.path)
+            this.data.pathslist.push(val.fileid)
           })
           this.setData({
             uploaderList: this.data.uploaderList,

@@ -1,6 +1,7 @@
 import WeCropper from '../../component/we-cropper/we-cropper.js'
 const device = wx.getSystemInfoSync()
 const db = wx.cloud.database()
+const app = getApp();
 
 Page({
   data: {
@@ -28,6 +29,8 @@ Page({
   },
   getCropperImage () {
     var that = this
+    var num = '0' + Math.floor(Math.random() * 100 + 1) 
+    var fileID =''
     this.cropper.getCropperImage(function (path, err) {
       if (err) {
         wx.showModal({
@@ -35,8 +38,17 @@ Page({
           content: err.message
         })
       } else {
+        // console.log(that.data.cursor)
         wx.showLoading({
-          title: '剪裁中',
+          title: '上传中',
+        })
+        //上传照片到云存储
+        wx.cloud.uploadFile({
+          cloudPath: 'upload/' + app.globalData.openid + '/' + num + new Date().getTime() + '.png',
+          filePath: path,
+          success:res=>{
+            fileID = res.fileID
+          }
         })
         setTimeout(function () {
           wx.hideLoading()
@@ -44,12 +56,13 @@ Page({
             data:{
               path: path,
               content: that.data.content,
-              cursor: that.data.cursor
+              cursor: that.data.cursor,
+              fileid: fileID
             }
           })
           .then(res=>{
             wx.redirectTo({
-              url: '../uploader/uploader?path=' + path,
+              url: '../uploader/uploader?fileID=' + fileID,
             })
           })  
         }, 1000)
