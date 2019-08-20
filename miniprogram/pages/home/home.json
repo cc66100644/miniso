@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "banner-swiper":"/component/swiper/swiper",
-    "community":"/component/community/community"
+    "community":"/component/community/community",
+    "home-header":"/component/home-header/home-header"
   }
 }

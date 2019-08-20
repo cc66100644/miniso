@@ -47,6 +47,7 @@ Page({
           cloudPath: 'upload/' + app.globalData.openid + '/' + num + new Date().getTime() + '.png',
           filePath: path,
           success:res=>{
+            // console.log(res)
             fileID = res.fileID
           }
         })

@@ -1,28 +1,42 @@
 <!--miniprogram/pages/article/article.wxml-->
+<!-- 评论显示 -->
+<view class="container">
 <!-- 标题 -->
-<view class="text">
-    <view>
-    <image src="{{userinfo.avatarUrl}}" mode='aspectFill' class="header"></image>
-    <text class="name">{{userinfo.nickName}}</text>
-    </view>
-</view>
-<!-- 轮播图 -->
-<view class='swiper-container'>
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
-    <block wx:for="{{url}}" wx:key="swiper-container">
-      <swiper-item>
-        <image src="{{url[index]}}" mode='aspectFill' class="slide-image"/>
-      </swiper-item>
-    </block>
-  </swiper>
-</view>
-<view>
-  <view>我的评论:{{content}}</view>
-</view>
-<view>
-  <view>点赞人头像</view>
-  <view>点赞的人数</view>
-</view>
-<view>
-    底部功能条
+  <view class="header">
+      <image src="{{userinfo.avatarUrl}}" mode='aspectFill' class="header-img"></image>
+      <text class="name">{{userinfo.nickName}}</text>
+  </view>
+  <!-- 轮播图 -->
+  <view class='swiper-container'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorcolor}}" indicator-active-color="{{indicatoractivecolor}}" circular="{{circular}}">
+      <block wx:for="{{url}}" wx:key="swiper-container">
+        <swiper-item>
+          <image src="{{url[index]}}" mode='aspectFill' class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 评论 -->
+  <view>
+    <view class="content {{hide ? 'hide':''}}">{{content}}</view>
+    <view class="btn" bindtap="click" style="{{cursor>=100?'display:block':'display:none'}}">{{hide ? '展开':'收起'}}</view>
+  </view>
+  <view class="zan">
+        <view wx:for="{{other}}" wx:key='index'> 
+        <image src="{{item}}" mode='aspectFill' class="zan-img" 
+          style="left: {{index == 0 ? 0 : -10*index +'px'}};z-index: {{index == 0 ? 10 : 10-index}};"></image>
+         </view>
+        <text class="zan-num">{{zan}}人点赞</text>
+  </view>
+  <view class="bottom">--没有更多数据了--</view>
+  <view class="footer">
+      <view class="fx left">
+        <image src="../../images/icon/fenxiang.png" mode="widthFix"></image>
+      </view>
+      <view class="dz right" style="background:url('{{dzactive ? dzon : dz}}') no-repeat;" bindtap="zan">
+        <view class="zan-num ps">{{zan}}</view>
+      </view>
+      <view class="sc right"style="background:url('{{scactive ? scon : sc}}') no-repeat;" bindtap="sc">
+      </view>
+  </view>
 </view>

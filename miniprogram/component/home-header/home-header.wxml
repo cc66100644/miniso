@@ -1,0 +1,37 @@
+<!--component/home-header/home-header.wxml-->
+<view class='header overflow'>
+  <view class='header-left overflow floatleft'>
+    <view class='user-head-img floatleft'>
+      <image src='{{user.img}}'></image>
+    </view>
+    <view class='user-head-info overflow floatleft'>
+      <view class='user-name'>{{user.name}}</view>
+      <view class='user-card'>{{user.cardlevel}}</view>
+    </view>
+  </view>
+  <view class='header-right floatright' bindtap="openpop">
+    <view class='header-right-bg overflow'>
+      <view class='header-right-img floatright'>
+        <image src='/images/icon/erweima.png'></image>
+      </view>
+      <view class='header-right-text'>会员码</view>
+    </view>
+  </view>
+</view>
+
+<cover-view id="abc" class="pop-up" hidden="{{pophiden}}" bindtap="closepop">
+      <cover-view class="pop-up-logo" catchtap="openpop">
+        <cover-image src="/images/icon/logo.png" class="logo"></cover-image>
+      </cover-view>
+      <cover-view class="pop-up-container" catchtap="openpop">
+        <cover-view  class="yiweima" > 
+          <cover-image src="{{user.yiweima}}" mode="aspectFit"></cover-image>
+        </cover-view>
+        <cover-view  class="erweima" >
+          <cover-image src="{{user.erweima}}" mode="aspectFit"></cover-image>
+        </cover-view>
+        <cover-view class="close" catchtap="closepop">
+          <cover-image src="/images/icon/close.png"></cover-image>
+        </cover-view>
+      </cover-view>
+</cover-view>

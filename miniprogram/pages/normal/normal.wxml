@@ -1,3 +1,4 @@
+<!-- 截图界面 -->
 <import src="../../component/we-cropper/we-cropper.wxml"/>
 
 <view class="cropper-wrapper">

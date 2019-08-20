@@ -103,7 +103,8 @@ Page({
           userinfo: userinfo,
           time: time,
           zan:0,
-          other:[]
+          other:[],
+          cursor: +(this.data.cursor)
         }
       })
       setTimeout(function () {

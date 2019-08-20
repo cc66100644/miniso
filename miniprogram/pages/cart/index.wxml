@@ -1,4 +1,5 @@
 <!--miniprogram/pages/cart/index.wxml-->
+<!-- 购物车 -->
 <!-- 商品卡片 -->
 <block wx:for='{{cartgoods}}' wx:key='cartgoods' >
 <view hidden="{{ item.hide }}">

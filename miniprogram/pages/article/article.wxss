@@ -1,16 +1,34 @@
 /* miniprogram/pages/article/article.wxss */
-/* 抬头 */
-.header{
-  width: 80rpx;
-  height: 80rpx;
+.container{
+  width: 100%;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+/* 头部 */
+.header, .zan{
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+}
+.header-img{
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
+  vertical-align: middle;
 }
 .name{
-  font-size: 32rpx;
-  background-color: #999;
+  font-size: 40rpx;
+  color: #999;
+  margin-left: 20rpx;
 }
 /* 轮播图 */
 .swiper-container{
+  margin-top: 20rpx;
   width: 100%;
   height: 750rpx;
 }
@@ -23,3 +41,79 @@ swiper{
   height: 750rpx;
   vertical-align: middle;
 }
+/* 评论 */
+.content{
+  width: 100%;
+  /* height: 90px; */
+  line-height: 26px;
+  padding:20rpx 20rpx 0 20rpx;
+  box-sizing: border-box;
+  word-wrap: break-word; 
+  word-break: normal; 
+}
+.hide{
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.btn{
+  width: 80rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+  text-align: center;
+  border:2px solid black;
+  border-radius: 20px;
+  margin: 20rpx 0 0 20rpx;
+}
+.zan view{
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+.zan-img{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  position: relative;
+}
+.zan-img-pos{
+  left: -10px;
+}
+.zan-num{
+  font-size: 32rpx;
+  color: #999;
+  /* margin-left: -50rpx; */
+}
+/* 底部工作条 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 44px;
+  background-color: whitesmoke;
+  z-index: 999;
+}
+.fx, .sc, .dz{
+  width:64rpx;
+  height: 64rpx;
+  margin: 6px 10px 6px 10px ;
+}
+.fx image{
+  width: 64rpx;
+}
+.ps{
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+.bottom{
+  height:44px;
+  text-align:center;
+  margin-top: 30rpx;
+}
+

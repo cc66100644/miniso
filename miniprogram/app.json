@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/uploader/uploader",
     "pages/home/home",
-    "pages/article/article",
     "pages/login/login",
+    "pages/logistics/logistics",
+    "pages/article/article",
+    "pages/uploader/uploader",
     "pages/community/community",
     "pages/normal/normal",
     "pages/goods/goods",
     "pages/cart/index",
     "pages/shop/shop",
-    "pages/logistics/logistics",
     "pages/mine/mine",
     "merchandise/merchandise",
     "pages/servicenotice/index",

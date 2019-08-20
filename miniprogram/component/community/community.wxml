@@ -1,16 +1,18 @@
 <!--component/community/community.wxml-->
 <view class='section'>
-    <view  class='list'>
+    <view class='list'>
       <view wx:for="{{content}}" wx:key="content"wx:if="{{index%2 == 0}}" class='content'>
-        <view>
-          <image src='{{item.url}}' mode='widthFix'>评论图片</image>
+        <view bindtap="click" id='{{item.time}}'>
+          <view>
+            <image src='{{item.url[0]}}' mode='widthFix'>评论图片</image>
+          </view>
+          <view class='text'>{{item.text}}</view>
         </view>
-        <view class='text'>{{item.text}}</view>
         <view class='user'>
           <view class='user-img'>
-          <image src='{{item.headimg}}'  mode='widthFix'></image>
+          <image src='{{item.userinfo.avatarUrl}}'  mode='widthFix'></image>
           </view>
-          <view class='username'>{{item.user}}</view>
+          <view class='username'>{{item.userinfo.nickName}}</view>
           <view class='zan-img'>
           <image src='../../images/icon/zan.png'  mode='widthFix'></image>
           </view>
@@ -20,15 +22,17 @@
     </view>
     <view  class='list'>
       <view wx:for="{{content}}" wx:key="content" wx:if="{{index%2 != 0}}" class='content'>
-        <view>
-          <image src='{{item.url}}' mode='widthFix'>评论图片</image>
+        <view bindtap="click" id='{{item.time}}'>
+          <view>
+            <image src='{{item.url[0]}}' mode='widthFix'>评论图片</image>
+          </view>
+          <view class='text'>{{item.text}}</view>
         </view>
-        <view class='text'>{{item.text}}</view>
         <view class='user'>
           <view class='user-img'>
-          <image src='{{item.headimg}}'  mode='widthFix'></image>
+          <image src='{{item.userinfo.avatarUrl}}'  mode='widthFix'></image>
           </view>
-          <view class='username'>{{item.user}}</view>
+          <view class='username'>{{item.userinfo.nickName}}</view>
           <view class='zan-img'>
           <image src='../../images/icon/zan.png'  mode='widthFix'></image>
           </view>

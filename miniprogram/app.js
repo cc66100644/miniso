@@ -5,6 +5,8 @@ App({
     globalData:{
       openid:null
       userInfo:null
+      latitude:null
+      longitude:null
     }
 
     if (!wx.cloud) {
@@ -27,7 +29,9 @@ App({
 
     this.globalData = {
       openid : null,
-      userInfo: null
+      userInfo: null,
+      latitude: null,
+      longitude: null
     }
   }
 })

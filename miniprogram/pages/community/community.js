@@ -1,6 +1,7 @@
 // miniprogram/pages/community/community.js
+const db = wx.cloud.database()
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,83 +12,6 @@ Page({
         user: '随机用户随机用户随机',
         headimg: '../../images/icon/zan.png',
         zan: '1'
-      },
-      {
-        url: 'http://img.mp.itc.cn/upload/20160816/03730864b6a545ccae5bdce4e199a3a1_th.png',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户2',
-        headimg: '../../images/icon/zan.png',
-        zan: '2'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '3'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '4'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/风扇/fan2.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户随机用户随机',
-        headimg: '../../images/icon/zan.png',
-        zan: '5'
-      },
-      {
-        url: 'http://img.mp.itc.cn/upload/20160816/03730864b6a545ccae5bdce4e199a3a1_th.png',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户2',
-        headimg: '../../images/icon/zan.png',
-        zan: '6'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '7'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '8'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/风扇/fan2.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户随机用户随机',
-        headimg: '../../images/icon/zan.png',
-        zan: '9'
-      },
-      {
-        url: 'http://img.mp.itc.cn/upload/20160816/03730864b6a545ccae5bdce4e199a3a1_th.png',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户2',
-        headimg: '../../images/icon/zan.png',
-        zan: '10'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '11'
-      },
-      {
-        url: 'cloud://apptest-z7eyd.6170-apptest-z7eyd/images/other/other3.jpg',
-        text: '非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好非常好',
-        user: '随机用户3',
-        headimg: '../../images/icon/zan.png',
-        zan: '12'
       }
     ]
   },
@@ -113,7 +37,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    db.collection('comment').get({
+      success: res => {
+        console.log(res.data)
+        this.setData({
+          content: res.data
+        })
+      }
+    })
   },
 
   /**

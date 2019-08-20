@@ -5,7 +5,7 @@
 }
 swiper{
   width: 100%;
-  margin-left: 1%;
+  /* margin-left: 1%; */
   /* position: relative; */
 }
 .slide-image{

@@ -1,3 +1,4 @@
+<!-- 图片文字上传界面 -->
 <!-- 文件上传 -->
 <view class='domes_title'>
   <view>{{cursor}}/200</view>

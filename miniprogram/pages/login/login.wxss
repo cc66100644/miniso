@@ -10,7 +10,9 @@
   line-height: 80rpx;
   background-color: red;
   position: absolute;
+  left: 30%;
   bottom: 160rpx;
+  /* text-align: center; */
   color: white;
 }
 

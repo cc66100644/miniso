@@ -23,11 +23,11 @@ Page({
     }else{
       wx.getSetting({
         success(res){
+          console.log(res.authSetting)
           if (res.authSetting['scope.userInfo']){
-            // console.log('sucess')
-            wx.switchTab({
-              url: '/pages/home/home'
-            })
+              wx.switchTab({
+                url: '/pages/home/home'
+              })
           }else{
             // console.log('failed')
             wx.showToast({

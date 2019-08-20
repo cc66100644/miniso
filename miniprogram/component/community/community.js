@@ -21,6 +21,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    click(e){
+      wx.navigateTo({
+        url: '../article/article?time=' +  e.currentTarget.id,
+      })
+    }
   }
 })

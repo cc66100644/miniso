@@ -1,9 +1,4 @@
-/* miniprogram/pages/home/home.wxss */
-.container{
-  width: 100%;
-  box-sizing: border-box;
-}
-
+/* component/home-header/home-header.wxss */
 .overflow{
   overflow: auto;
   zoom: 1;
@@ -14,56 +9,72 @@
 .floatright{
   float: right;
 }
-
-.swiper{
+.header{
   width: 100%;
 }
-/* 热门个商品左右滑动列表 */
-.title{
-  font-weight: bold;
-  font-size: 32rpx;
-  margin: 20rpx 0 0 10rpx;
-  text-align: left
+.header-left{
+  width: 40%;
+  margin:10rpx;
 }
-.hot-view_H, .nav-view_H {
-  width: 100%;
-  white-space: nowrap;
+.user-head-img image{
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+  /* border: 2rpx solid black; */
+  border-radius: 50%;
 }
-.hot-view-item_H {
-  width: 180rpx;
-  height: 180rpx;
-  display: inline-block;
-  margin: 10rpx 20rpx;
+.user-head-info{
+  float: left;
+  margin-left: 10rpx;
 }
-.hot-view-image{
-  width: 100%;
-  height: 100%;
-}
-.hot-view-font{
+.user-name{
+  width: 200rpx;
   font-size: 28rpx;
-  text-align: center;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis; 
-  margin-top: 20rpx;
+  overflow: hidden;
+  margin-bottom: 8rpx;
 }
-/* 导航条左右滑动 */
-.nav-view_H{
-  margin-top: 20rpx;
-}
-.nav-view-item_H{
-  margin-right:10rpx; 
-  border: 2rpx solid #666;
-  border-radius: 40rpx;
-  width: 120rpx;
-  height: 60rpx;
-  display: inline-block;
-  margin: 10rpx 10rpx;
-}
-.nav-view-font{
-  font-size: 28rpx;
+.user-card{
+  width: 80rpx;
+  font-size: 24rpx;
+  line-height: 30rpx;
   text-align: center;
+  color: #E9B52D;
+  border:2rpx solid #E9B52D;
+  border-radius: 40rpx;
+}
+.header-right{
+  width: 200rpx;
+  height:60rpx;
+  margin: 20rpx 20rpx 0 0;
+}
+
+.header-right-bg{
+  width: 200rpx;
+  height:60rpx;
   line-height: 60rpx;
+  border: 2rpx solid red;
+  border-radius: 40rpx;
+  background-color: red;
+  text-align: center;
+}
+.header-right-text{
+  width: 100rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  color: white;
+  margin-left: 30rpx;
+}
+.header-right-img{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right:40rpx; 
+  margin-top: 8rpx;
+}
+.header-right-img image{
+  width: 38rpx;
+  height: 38rpx;
 }
 /* 弹出层 */
 .pop-up{
@@ -126,16 +137,4 @@
   position: relative;
   left: 510rpx;
   bottom: 500rpx;
-}
-.publish{
-  width: 160rpx;
-  height: 80rpx;
-  border-radius: 20px;
-  border: none;
-  background-color: red;
-  position: fixed;
-  right: 20rpx;
-  bottom:20rpx;
-  color: white;
-  line-height: 80rpx;
 }
