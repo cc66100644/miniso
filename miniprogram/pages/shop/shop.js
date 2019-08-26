@@ -29,7 +29,8 @@ Page({
     newGood:[],
     hotRecommend:[],
     goodsInfo:[],
-    goodsInfoTitle: ''
+    goodsInfoTitle: '',
+    aaaa:[]
   },
   //页签切换页面
   click: function(e) {

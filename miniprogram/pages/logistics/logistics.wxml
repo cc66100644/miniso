@@ -1,5 +1,45 @@
 <!--miniprogram/pages/logistics/logistics.wxml-->
-<!-- 物流信息界面 -->
-<home-header user="{{userInfo}}"/>
-<view>我的位置:{{latitude}},{{longitude}}</view>
+<scroll-view class="container" scroll-y="true">
+  <!-- 物流信息界面 -->
+  <view class="header">
+    <home-header user="{{userInfo}}"/>
+    <view class="position">我的位置:{{latitude}},{{longitude}}</view>
+    <view class="guarantee">
+          <view class="guaranteeItem"  wx:for='{{guaranteeText}}' wx:key='guaranteeText'>
+              <image src="../../images/icon/zan-on.png"></image>
+              <text>{{item}}</text>
+          </view>
+        </view>
+  </view>
+  <!-- 商品 -->
+  <view class="goods">
+  <!-- 导航 -->
+    <view class="nav">
+      <scroll-view class="nav-view_H" scroll-x>
+        <view wx:for="{{navName}}" class='nav-view-item_H {{selected[index] ?"selected":""}}' wx:key="navName" bindtap="click">
+          <view class='nav-view-font' id="{{index}}">{{item}}</view>
+        </view>
+      </scroll-view>
+    </view>
+    <!-- 商品列表 -->
+      <view wx:for='{{selected}}' wx:key='selected' id="{{index}}" hidden="{{!selected[index]}}" class="goods-list">
+          <view class="goods-info" wx:for='{{goodsinfo}}' wx:key='index' wx:for-index='j'>
+            <view class="goods-section">
+                <view id="{{item._id}}" bindtap="skip" style="width:100%;height:100%">
+                  <view class="goods-img">
+                    <image src="{{item.src}}" mode="widthFix"></image>
+                    <view class="goods-desc">{{item.desc}}</view>
+                  </view>
+                  <view class="goods-name">{{item.name}}</view>
+                  <view class="goods-price">¥{{item.price}}</view>
+                  <view class="goods-add" id="{{item._id}}" catchtap="add">+</view>
+                </view>
+            </view>
+          </view>
+      </view>
+    </view>
+    <view class="btn" bindtap="cart"> 
+      <image src="../../images/icon/cart.png" mode="widthFix"></image>
+    </view>
+</scroll-view>
 

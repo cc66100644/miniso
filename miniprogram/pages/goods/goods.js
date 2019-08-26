@@ -1,6 +1,7 @@
 // miniprogram/pages/goods/goods.js
 import tool from "../../utils/tool.js";
-const db = wx.cloud.database()
+const db = wx.cloud.database();
+const app = getApp();
 Page({
 
   /**
@@ -158,6 +159,7 @@ Page({
     })
     //购物车中有的数量叠加，没有的就新增
     db.collection('cart').where({
+      _openid: app.globalData.openid,
       goodsid: this.data.mychoose.id
     }).get({
       success:res=>{

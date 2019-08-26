@@ -1,4 +1,5 @@
 // miniprogram/pages/logistics/logistics.js
+// import tool from "../../utils/tool.js";
 const db = wx.cloud.database()
 const app = getApp();
 Page({
@@ -15,10 +16,90 @@ Page({
       yiweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/cnaidc.png'
     },
     latitude: null,
-    longitude: null
+    longitude: null,
+    guaranteeText: [
+      '名创优品自营', '30天无忧退货', '2个工作日内到货'
+    ],
+    navName: [
+    '日用品', '娃娃', '餐厨', '背包', '零食', '风扇', '香水'
+    ],
+    selected: [true, false, false, false, false, false, false],
+    goodsinfo:[],
   },
-  click(){
-    console.log(this.data.userInfo)
+  click: function (e) {
+    //页签切换
+    let index = e.target.id
+    let selected = this.data.selected
+    for (let i = 0; i < selected.length; i++) {
+      selected[i] = false
+    }
+    selected[index] = !selected[index]
+    this.setData({
+      selected: selected
+    })
+    db.collection('goods').where({
+      type: +(index) + 1
+    }).get({
+      success:res => {
+        this.setData({
+          goodsinfo: res.data
+        })
+      }
+    })
+  },
+  //商品页面跳转
+  skip: function (e) {
+    // console.log(e)
+    // console.log(e.currentTarget)
+    wx.navigateTo({
+      url: '../../pages/goods/goods?id=' + e.currentTarget.id,
+    })
+  },
+  // 购物车跳转
+  cart(){
+    wx.navigateTo({
+      url: '../cart/index',
+    })
+  },
+  // 购物车加1
+  add(e){
+    db.collection('cart').where({
+      _openid:app.globalData.openid,
+      goodsid:e.currentTarget.id
+    }).get({
+      success:res=>{
+        // console.log(res.data)
+        if(res.data.length == 0){
+          db.collection('cart').add({
+            data: {
+              goodsid: e.currentTarget.id,
+              num: 1,
+              hide: false,
+              choose: true
+            },
+            success: function (res) {
+              wx.showToast({
+                title: '购物车+1',
+                duration:1000
+              })        
+            }
+          })
+        } else {
+          db.collection('cart').doc(res.data[0]._id).update({
+            data: {
+              num: (res.data[0].num + 1)
+            },
+            success: function (res) { 
+              wx.showToast({
+                title: '购物车+1',
+                duration: 1000
+              })     
+            },
+            fail: function (res) { }
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -36,7 +117,20 @@ Page({
       latitude: app.globalData.latitude,
       longitude: app.globalData.longitude
     })
+
+    // let goodsType = parseInt(index) + 1
+    db.collection('goods').where({
+      type:1
+    }).get({
+      success:res=>{
+        this.setData({
+          goodsinfo:res.data
+        })
+      }
+    })
+
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
