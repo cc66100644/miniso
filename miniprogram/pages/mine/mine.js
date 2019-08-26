@@ -1,18 +1,35 @@
 // miniprogram/pages/mine/mine.js
+const db = wx.cloud.database()
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      img: '',
+      name: '11',
+      cardlevel: '普卡',
+      erweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/erweima.png',
+      yiweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/cnaidc.png'
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取用户信息，头像名称显示
+    this.setData({
+      userInfo: {
+        img: app.globalData.userInfo.avatarUrl,
+        name: app.globalData.userInfo.nickName,
+        cardlevel: '普卡',
+        erweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/erweima.png',
+        yiweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/cnaidc.png',
+      }
+    })
   },
 
   /**

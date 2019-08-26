@@ -1,3 +1,18 @@
 <!--miniprogram/pages/mine/mine.wxml-->
 <!-- 用户界面 -->
-<text>miniprogram/pages/mine/mine.wxml</text>
+<scroll-view class="container" scroll-y="true">
+  <view class="header">
+    <home-header user="{{userInfo}}"/>
+  </view>
+  <view class="info">
+    <view class="myinfo">
+      <view>积分商城</view>
+      <view>优惠券</view>
+      <view>购物车</view>
+      <view>文章</view>
+    </view>
+    <view class="myorder">
+      <view>我的订单</view>
+    </view>
+  </view>
+</scroll-view>

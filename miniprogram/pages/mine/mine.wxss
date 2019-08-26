@@ -1,1 +1,37 @@
 /* miniprogram/pages/mine/mine.wxss */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: gainsboro;
+}
+.header{
+  width: 100%;
+  height: 220rpx;
+  background-color: #333;
+  box-sizing: border-box;
+  padding-top: 50rpx;
+}
+.info{
+  width: 100%;
+  height: 400rpx;
+  background-color: white;
+}
+.myinfo{
+  width: 94%;
+  height: 160rpx;
+  margin: 0 3%;
+  position: relative;
+  top:-40rpx;
+  border-radius: 5px;
+  box-shadow: 0 -1px 5px white,0 1px 5px #333;
+  background-color: white;
+}
