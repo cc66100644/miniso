@@ -14,8 +14,38 @@ Page({
       erweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/erweima.png',
       yiweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/cnaidc.png'
     },
+    cartNum:0,
+    articleNum:0
   },
-
+  cart(){
+    wx.navigateTo({
+      url: '../cart/index',
+    })
+  },
+  article(){
+    wx.navigateTo({
+      url: '../myarticle/myarticle',
+    })
+  },
+  jifen(){
+    wx.showModal({
+      title: '提示',
+      content: '功能暂未开放',
+      showCancel: false,
+    })
+  },
+  youhui(){
+    wx.showModal({
+      title: '提示',
+      content: '功能暂未开放',
+      showCancel: false,
+    })
+  },
+  myorder(){
+    wx.navigateTo({
+      url: '../myorder/myorder',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,6 +58,32 @@ Page({
         cardlevel: '普卡',
         erweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/erweima.png',
         yiweima: 'cloud://apptest-z7eyd.6170-apptest-z7eyd-1259660366/icon/cnaidc.png',
+      }
+    })
+    //获取购物车的总数
+    let sum = 0;
+    db.collection('cart').where({
+      _openid: app.globalData.openid
+    }).get({
+      success: arr => {
+        // console.log(arr.data)
+        for (let i = 0; i < arr.data.length; i++) {
+          // console.log('第'+i+'个:'+ arr.data[i].num)
+          sum += arr.data[i].num
+        }
+        // console.log('总数'+ sum)
+        this.setData({
+          cartNum: sum
+        })
+      }
+    })
+    db.collection('comment').where({
+      _openid: app.globalData.openid
+    }).count({
+      success:res => {
+        this.setData({
+          articleNum: res.total
+        })
       }
     })
   },

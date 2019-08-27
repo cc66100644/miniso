@@ -138,3 +138,6 @@
   left: 510rpx;
   bottom: 500rpx;
 }
+.color-white{
+  color: white;
+}

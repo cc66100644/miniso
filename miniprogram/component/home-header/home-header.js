@@ -7,6 +7,10 @@ Component({
     user:{
       type:Object,
       value:[],
+    },
+    white:{
+      type:Boolean,
+      value:false,
     }
   },
 

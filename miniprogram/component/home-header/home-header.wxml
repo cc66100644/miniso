@@ -5,7 +5,7 @@
       <image src='{{user.img}}'></image>
     </view>
     <view class='user-head-info overflow floatleft'>
-      <view class='user-name'>{{user.name}}</view>
+      <view class='user-name {{white?"color-white":""}}'>{{user.name}}</view>
       <view class='user-card'>{{user.cardlevel}}</view>
     </view>
   </view>

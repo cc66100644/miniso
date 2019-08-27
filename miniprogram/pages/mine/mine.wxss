@@ -20,6 +20,8 @@
   box-sizing: border-box;
   padding-top: 50rpx;
 }
+
+/* 用的一些信息 */
 .info{
   width: 100%;
   height: 400rpx;
@@ -34,4 +36,72 @@
   border-radius: 5px;
   box-shadow: 0 -1px 5px white,0 1px 5px #333;
   background-color: white;
+  display: flex;
+  text-align: center;
+}
+.myinfo-style{
+  width: 26%;
+  box-sizing: border-box;
+  padding: 2% 0;
+}
+.box{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+}
+.border{
+  border-right: 2rpx solid #ccc;
+}
+
+/* 我的订单 */
+.myorder{
+  width: 100%;
+  height: 200rpx;
+  box-sizing: border-box;
+  padding: 2% 4%;
+  /* background-color: yellowgreen; */
+}
+.myorder-header{
+  display: flex;
+  justify-content: space-between;
+}
+.myorder-all{
+  font-size: 28rpx;
+  color: #999;
+}
+.myorder-text{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.myorder-li{
+  text-align: center;
+}
+.myorder-img{
+  width: 64rpx;
+  height: 64rpx;
+}
+
+/* 服务 */
+.server{
+  width: 100%;
+  height: 250px;
+  background-color: white;
+  margin-top: 20rpx;
+}
+.van-cell.server-li{
+  height: 100rpx;
+  line-height: 60rpx;
+}
+.van-cell__right-icon{
+  line-height: 60rpx;
+}
+.server-text{
+  font-size: 32rpx;
+}
+.custom-icon{
+  width: 32rpx;
+  height: 48rpx;
+  color: #999;
+  margin-top: 8px;
 }

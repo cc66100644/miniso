@@ -150,8 +150,6 @@ Page({
   //加入购物车
   joinCart:function() {
     //当前购物车中的的总数
-    // console.log(this.data.cartnum)
-    // console.log(this.data.num)
     let sum = this.data.cartnum + this.data.num
     // console.log(sum)
     this.setData({
@@ -255,7 +253,6 @@ Page({
     
     
   },
-
 
   onClickIcon() {
     wx.showToast({

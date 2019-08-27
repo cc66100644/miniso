@@ -2,17 +2,74 @@
 <!-- 用户界面 -->
 <scroll-view class="container" scroll-y="true">
   <view class="header">
-    <home-header user="{{userInfo}}"/>
+    <home-header user="{{userInfo}}" white='true' />
   </view>
   <view class="info">
     <view class="myinfo">
-      <view>积分商城</view>
-      <view>优惠券</view>
-      <view>购物车</view>
-      <view>文章</view>
+      <!-- 积分商城积分 未做-->
+      <view class="myinfo-style">
+        <view class="box border" bindtap="jifen">
+          <view>0</view>
+          <view>积分商城</view>
+        </view>
+      </view>
+      <!-- 优惠券数量 未做-->
+      <view class="myinfo-style">
+        <view class="box border" bindtap="youhui">
+          <view>0</view>
+          <view>优惠券</view>
+        </view>
+      </view>
+      <!-- 购物车数量 -->
+      <view class="myinfo-style">
+        <view class="box border" bindtap="cart">
+          <view>{{cartNum}}</view>
+          <view>购物车</view>
+        </view>
+      </view>
+      <!-- 我发布的文章数量 -->
+      <view class="myinfo-style">
+        <view class="box" bindtap="article">
+          <view>{{articleNum}}</view>
+          <view>文章</view>
+        </view>
+      </view>
     </view>
     <view class="myorder">
-      <view>我的订单</view>
+      <view class="myorder-header">
+        <view>我的订单</view>
+        <view class="myorder-all" bindtap="myorder">全部订单></view>
+      </view>
+      <view class="myorder-text">
+        <view class="myorder-li">
+          <image src="../../images/icon/daifukuan.png" class="myorder-img"></image>
+          <view>待付款</view>
+        </view>
+        <view class="myorder-li">
+          <image src="../../images/icon/daifahuo.png" class="myorder-img"></image>
+          <view>待发货</view>
+        </view>
+        <view class="myorder-li">
+          <image src="../../images/icon/wuliu.png" class="myorder-img"></image>
+          <view>已发货</view>
+        </view>
+        <view class="myorder-li">
+          <image src="../../images/icon/wodepinglun.png" class="myorder-img"></image>
+          <view>待评价</view>
+        </view>
+      </view>
     </view>
+  </view>
+  <view class="server">
+    <van-cell title="收货地址" custom-class='server-li' title-class='server-text'>
+      <van-icon slot="right-icon" name="arrow" size='20px' custom-class="custom-icon" />
+    </van-cell>
+    <van-cell title="门店客服" custom-class='server-li' title-class='server-text'>
+      <van-icon slot="right-icon" name="arrow" size='20px' custom-class="custom-icon" />
+    </van-cell>
+    <van-cell title="电商客服" custom-class='server-li' title-class='server-text'>
+      <van-icon slot="right-icon" name="arrow" size='20px' custom-class="custom-icon" />
+    </van-cell>
+    <van-cell title="当前版本" custom-class='server-li' title-class='server-text' value='1.0' />
   </view>
 </scroll-view>
